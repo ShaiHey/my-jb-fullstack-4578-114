@@ -1,0 +1,44 @@
+@font-face {
+    font-family: 'Screamous';
+    src: url('/assets/fonts/Screamous.ttf');
+}
+
+@keyframes rotation {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+html {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+div {
+    width: 400px;
+    height: 100px;
+    margin: 0 auto;
+    border-radius: 20px;
+    border: 1px solid black;
+    text-align: center;
+    font-family: 'Screamous';
+    font-size: x-large;
+    line-height: 100px;
+    background-image: radial-gradient(circle, rgba(63,94,251,1) 0%, rgba(252,70,107,1) 100%);
+    color: white;
+
+    box-shadow: 5px 5px 5px black;
+    position: relative;
+    transform-origin: center;
+    animation: rotation 10s linear infinite;
+}

@@ -1,0 +1,95 @@
+/* Name selector */
+
+html {
+    border: 1px solid blue;
+}
+
+body {
+    border: 1px solid red;
+}
+
+h1 {
+    color: green;
+    background-color: yellow;
+}
+
+p {
+    color: red;
+    border: 1px dotted blue;
+}
+
+/* Class selector */
+
+.cool-design {
+    color: blue;
+    background-color: red;
+}
+
+.cool-design-big {
+    font-size: xx-large;
+    font-weight: bold;
+    color: green;
+}
+
+/* ID selector */
+
+#last-paragraph {
+    font-size: xx-small;
+    text-decoration: underline;
+    font-style: italic;
+}
+
+/* Attribute selector */
+
+input[placeholder] {
+    background-color: yellow;
+}
+
+input[placeholder="first name"] {
+    border: 3px dashed;
+}
+
+/* Pseudo selector */
+a {
+    color: yellow;
+}
+
+a:visited {
+    color: red;
+}
+
+a:hover {
+    color: green;
+    font-size: xx-large;
+}
+
+p::first-line {
+    background-color: purple;
+}
+
+p::first-letter {
+    font-size: xx-large;
+    color: cyan;
+}
+
+/* Combination of selectors */
+
+/* a p that has cool-design class */
+p.cool-design {
+    text-decoration: underline;
+}
+
+/* both html and body tags wil be applied with the attribute */
+html, body {
+    margin: 0;
+    padding: 0;
+}
+
+/* all a tags that have a p tag as a parent somewhere */
+p a {
+    color: black;
+}
+
+p > a {
+    border: 3px dashed grey;
+}

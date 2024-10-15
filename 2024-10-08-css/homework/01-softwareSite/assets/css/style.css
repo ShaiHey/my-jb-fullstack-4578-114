@@ -1,0 +1,29 @@
+div {
+    height: auto;
+    margin: 10px;
+    padding: 10px;
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+}
+
+p {
+    margin: 0;
+    padding: 20px;
+    font-size: x-large;
+    text-align: left;
+    border: 3px solid black;
+    flex: 1;
+}
+
+div > p:nth-child(1) {
+    color: red;
+}
+
+div > p:nth-child(2) {
+    color: yellow;
+}
+
+div > p:nth-child(3) {
+    color: lightgreen;
+}

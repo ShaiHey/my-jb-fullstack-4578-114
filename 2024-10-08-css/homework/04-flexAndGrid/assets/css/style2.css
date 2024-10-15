@@ -1,0 +1,80 @@
+/* General Styling */
+html, body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    border: 1px solid black;
+}
+
+.container {
+    display: grid;
+    grid-template-rows: auto auto 1fr auto;
+    grid-template-columns: 1fr;
+
+    border: 1px solid black;
+}
+
+header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid black;
+}
+
+nav {
+    display: flex;
+    justify-content: space-around;
+    padding: 10px;
+
+    border: 1px solid black;
+}
+
+main {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 20px;
+    padding: 20px;
+
+    border: 1px solid black;
+}
+
+.image-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+
+    border: 1px solid black;
+}
+
+.image-grid img {
+    width: 100%;
+    height: auto;
+}
+
+.contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 10px;
+    align-items: center;
+    border: 1px solid black;
+    padding: 10px;
+}
+
+.contact-grid label {
+    margin: 0;
+}
+
+.contact-grid input {
+    padding: 5px;
+    margin: 0;
+}
+
+footer {
+    text-align: center;
+    border: 1px solid black;
+}

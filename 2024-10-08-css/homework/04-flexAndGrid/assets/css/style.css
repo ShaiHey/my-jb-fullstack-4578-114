@@ -1,0 +1,17 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    height: 100%;
+    background-color: pink;
+}
+
+.container {
+    height: 100%;
+    border: 1px solid black;
+    box-sizing: border-box;
+}
+
+.container > * {
+    border: 1px solid black;
+}

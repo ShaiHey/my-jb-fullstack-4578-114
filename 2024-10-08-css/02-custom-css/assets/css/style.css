@@ -1,0 +1,71 @@
+@font-face {
+	font-family: 'Falcon Picture';
+	src: url('../fonts/FalconPicture.otf');
+}
+
+@font-face {
+	font-family: 'CHLORINR';
+	src: url('../fonts/CHLORINR.TTF');
+}
+
+h1 {
+    text-align: center;
+    font-family: 'CHLORINR';
+    font-size: xx-large;
+    transition: 1s;
+    transform: rotate(-15deg) scale(0.5);
+}
+
+h1:hover {
+    color: green;
+    transform: rotate(0deg) scale(2);
+}
+
+@keyframes myAnima {
+    from {
+        color: blue;
+        transform: scale(2);
+    }
+
+    to {
+        color: red;
+        transform: scale(0.5);
+    }
+}
+
+@keyframes myLongAnima {
+    0% {
+        color: blue;
+        transform: scale(2);
+    }
+
+    50% {
+        color: green;
+        transform: scale(3);
+    }
+
+    100% {
+        color: red;
+        transform: scale(0.5);
+    }
+}
+
+p {
+    text-align: center;
+    margin-top: 100px;
+}
+
+p:hover {
+    animation: myLongAnima 3s infinite alternate linear;
+}
+
+h2 {
+    text-align: center;
+    font-size: 16px;
+}
+
+@media (max-width: 600px) {
+    h2 {
+        font-size: 32px;
+    }
+}

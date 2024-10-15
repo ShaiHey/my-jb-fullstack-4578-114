@@ -1,0 +1,9 @@
+body {
+    background-color: green;
+}
+
+h1, h2 {
+    text-align: center;
+    color: yellow;
+    font-family: 'Courier New', Courier, monospace;
+}

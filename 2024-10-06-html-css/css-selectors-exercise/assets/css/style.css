@@ -1,0 +1,14 @@
+h1, h2 {
+    text-align: center;
+}
+
+form {
+    border: 1px solid black;
+    text-align: center;
+    width: fit-content;
+    margin: 0 auto;
+}
+
+input {
+    background-color: yellow;
+}

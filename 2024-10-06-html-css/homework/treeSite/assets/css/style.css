@@ -1,0 +1,57 @@
+
+@font-face {
+	font-family: 'Ezra SIL SR';
+	src: url('fonts/ezrasilsr-webfont.eot?#iefix') format('embedded-opentype'),
+	     url('fonts/ezrasilsr-webfont.woff') format('woff'), 
+	     url('fonts/ezrasilsr-webfont.ttf')  format('truetype'),
+	     url('fonts/ezrasilsr-webfont.svg#EzraSILSR') format('svg');
+}
+
+html {
+    background: url('../images/treeBack.png') no-repeat 0 0 scroll;
+    font-family: 'Ezra SIL SR';
+	direction: rtl;
+	text-align: right;
+}
+
+body {
+    text-align: center;
+}
+
+form {
+    text-align: left;
+}
+
+table {
+    border: 1px solid black;
+}
+
+.header-text {
+    color: rgb(111, 17, 17);
+}
+
+.welcome-text {
+    font-size: x-large;
+}
+
+input {
+    background-color: yellow;
+}
+
+input[type="submit"] {
+    background-color: rgb(167, 243, 243);
+}
+
+#img-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 25px;
+    gap: 5px;
+}
+
+#img-container img {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+}

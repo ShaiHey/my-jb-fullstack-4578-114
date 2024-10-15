@@ -1,0 +1,151 @@
+<html>
+    <head>
+        <title>Input Tags</title>
+    </head>
+
+    <body>
+        <p>Here is an input form:</p>
+
+        <form action="">
+
+            <!-- <p>First Name:</p> -->
+            <label for="firstName">First Name:</label>
+            <br>
+            <input type="text" id="firstName" placeholder="Please enter your first name...">
+
+            <br>
+            <br>
+
+            <!-- input type="text" -->
+            <label for="lastName">Last Name:</label>
+            <br>
+            <input type="text" id="lastName" placeholder="Please enter your last name...">
+
+            <br>
+            <br>
+
+            <!-- input type="date" -->
+            <label for="birthDate">Birth Date:</label>
+            <br>
+            <input type="date" id="birthDate">
+
+            <br>
+            <br>
+
+            <!-- input type="datetime-local" -->
+            <label for="meetingTime">Meeting Time:</label>
+            <br>
+            <input type="datetime-local" id="meetingTime">
+
+            <br>
+            <br>
+
+            <!-- input type="file" -->
+            <label for="profilePic">Profile Picture:</label>
+            <br>
+            <input type="file" accept=".png" id="profilePic">
+
+            <br>
+            <br>
+
+            <!-- textarea is used to input of large amounts of text -->
+            <label for="complaint">Complaint:</label>
+            <br>
+            <textarea name="complaint" id="complaint" cols="30" rows="10" placeholder="Please enter your complaint"></textarea>
+
+            <br>
+            <br>
+
+            <!-- input type="color" -->
+            <label for="favoriteColor">Favorite Color:</label>
+            <br>
+            <input type="color" id="favoriteColor">
+
+            <br>
+            <br>
+
+            <!-- input type="email" -->
+            <label for="email">Email:</label>
+            <br>
+            <input type="email" id="email" placeholder="Please enter your email...">
+
+            <br>
+            <br>
+
+            <!-- input type="number" -->
+            <label for="age">Age:</label>
+            <br>
+            <input type="number" id="age" placeholder="Please enter your age...">
+
+            <br>
+            <br>
+
+            <!-- input type="password" -->
+            <label for="password">Password:</label>
+            <br>
+            <input type="password" id="password" placeholder="Please enter your password...">
+
+            <br>
+            <br>
+
+            <!-- input type="checkbox" -->
+            <label for="terms">I agree to the Terms:</label>
+            <br>
+            <input type="checkbox" id="terms">
+
+            <br>
+            <br>
+
+            <!-- input type="checkbox" -->
+            <label for="agreeEmail">I agree to received emails:</label>
+            <br>
+            <input type="checkbox" id="agreeEmail">
+
+            <br>
+            <br>
+
+            <!-- input type="radio" -->
+            <label>Male:</label>
+            <input type="radio" name="gender">
+
+            <label>Female:</label>
+            <input type="radio" name="gender">
+
+            <br>
+            <br>
+
+            <!-- input type="tel" -->
+            <label for="phoneNumber">Phone number:</label>
+            <br>
+            <input type="tel" id="phoneNumber" placeholder="Please enter your phone number...">
+
+            <br>
+            <br>
+
+            <!-- select -->
+            <label for="city">City:</label>
+            <br>
+            <select id="city">
+                <option selected disabled>Please select city...</option>
+                <option>Tel Aviv</option>
+                <option>Jerusalem</option>
+                <option>Petah Tikva</option>
+                <option>Ashkelon</option>
+            </select>
+
+            <br>
+            <br>
+
+            <!-- multi select -->
+            <label for="hobbies">Hobbiess:</label>
+            <br>
+            <select id="hobbies" multiple>
+                <option>Cooking</option>
+                <option>Knitting</option>
+                <option>Sport</option>
+                <option>Shoe making</option>
+            </select>
+            
+        </form>
+    </body>
+</html>
