@@ -8,6 +8,6 @@
 let num;
 
 do {
-    num = +prompt();
+    num = +prompt("Please enter a number");
     alert(num ** 2);
 } while (num !== 0);
