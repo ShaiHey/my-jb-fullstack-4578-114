@@ -1,0 +1,22 @@
+<friends>
+    <friend id="1">
+        <name>Mira</name>
+        <age>22</age>
+        <city>Petach Tiqwa</city>
+        <gender>Female</gender>
+    <friend/>
+
+    <friend id="2">
+        <name>Yoav</name>
+        <age>22</age>
+        <city>Hertzliya</city>
+        <gender>Male</gender>
+    <friend/>
+
+    <friend id="3">
+        <name>Chai</name>
+        <age>22</age>
+        <city>Netanya</city>
+        <gender>Male</gender>
+    <friend/>
+</friends>
