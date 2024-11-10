@@ -1,0 +1,16 @@
+[
+    {
+        "id": 1,
+        "name": "Mira",
+        "age": 22,
+        "city": "Petach Tiqwa",
+        "gender": "Female"
+    },
+    {
+        "id": 2,
+        "name": "Yoav",
+        "age": 22,
+        "city": "Herzliya",
+        "gender": "Male"
+    }
+]
