@@ -9,7 +9,7 @@ for(let i = 1; i <= height; i++){
             if(j === 1 || j === width){
                 document.write("*");
             } else {
-                document.write("&nbsp;");
+                document.write("&nbsp;&nbsp;");
             }
         }
     }
