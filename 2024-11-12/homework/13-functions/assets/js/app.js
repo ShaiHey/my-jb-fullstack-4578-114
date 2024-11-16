@@ -7,7 +7,17 @@ function printSquareAsterisks(w, h){
         }
         document.write("<br>")
     }
+
+    document.write("<hr/>");
 }
+
+function randomNumber() {
+    return parseInt(Math.random() * 100);
+}
+
+printSquareAsterisks(6, 4);
+
+printSquareAsterisks(randomNumber(), randomNumber());
 
 const width = +prompt("Please enter a width :"); // Number of *
 const height = +prompt("Please enter a height :"); // Number of line
