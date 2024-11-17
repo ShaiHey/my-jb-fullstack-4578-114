@@ -5,21 +5,25 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="assets/css/style.css">
         <script src="assets/js/app.js"></script>
-        <title>innerText VS innerHTML</title>
+        <title>HTML validation</title>
     </head>
     <body>
-        <h2>InnerText</h2>
-        <p id="myP">Hello</p>
-        <div>
-            <input id="textInput" type="text" placeholder="Please enter a text">
-            <button onclick="changeParagraphInnerText()">Change</button>
-        </div>
+        <h2>Login</h2>
 
-        <h2>InnerHTML</h2>
-        <p id="myP2">Hello</p>
-        <div>
-            <input id="textInput2" type="text" placeholder="Please enter a text">
-            <button onclick="changeParagraphInnerHTML()">Change</button>
-        </div>
+        <form action="save.html" method="GET">
+            <label>Email</label>
+            <input name="mail" type="email" required>
+            <br> <br>
+
+            <label>Password</label>
+            <input name="password" type="password" required minlength="6">
+            <br> <br>
+
+            <label>Age</label>
+            <input name="age" type="number" required min="13">
+            <br> <br>
+
+            <button>Login</button>
+        </form>
     </body>
 </html>
