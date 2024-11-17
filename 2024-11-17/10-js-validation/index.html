@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="assets/css/style.css">
+        <script src="assets/js/app.js"></script>
+        <title>JS validation</title>
+    </head>
+    <body>
+        <h2>Login</h2>
+
+        <form action="save.html" method="GET" onsubmit="validate(event)">
+            <label>Email</label>
+            <input id="email" name="email" type="email">
+            <br>
+            <div id="emailErrorMessage" class="error"></div>
+            <br> <br>
+
+            <label>Password</label>
+            <input id="password" name="password" type="password">
+            <br>
+            <div id="passwordErrorMessage" class="error"></div>
+            <br> <br>
+
+            <label>Age</label>
+            <input id="age" name="age" type="number">
+            <br>
+            <div id="ageErrorMessage" class="error"></div>
+            <br> <br>
+
+            <button>Login</button>
+        </form>
+    </body>
+</html>
