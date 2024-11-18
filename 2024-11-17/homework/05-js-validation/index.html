@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="assets/css/style.css">
+        <script src="assets/js/app.js"></script>
+        <title>Home Work JS validation 05</title>
+    </head>
+    <body>
+        <h2>JS validation</h2>
+
+        <form action="save.html" method="GET" onsubmit="validate(event)">
+            <label>First Name</label>
+            <input id="firstName" name="firstName" type="text">
+            <br>
+            <span id="errorMessageFirst"></span>
+            <br>
+
+            <label>Last Name</label>
+            <input id="lastName" name="lastName" type="text">
+            <br>
+            <span id="errorMessageLast"></span>
+            <br>
+
+            <label>Email</label>
+            <input id="email" name="email" type="email">
+            <br>
+            <span id="errorMessageEmail"></span>
+            <br>
+            <button>Send</button>
+        </form>
+    </body>
+</html>

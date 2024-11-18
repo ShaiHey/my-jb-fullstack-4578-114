@@ -1,0 +1,29 @@
+function validate(event) {
+    event.preventDefault();
+
+    const firstNameInput = document.getElementById("firstName");
+    const lastNameInput = document.getElementById("lastName");
+    const emailInput = document.getElementById("email");
+    const errorMessageSpanFirst = document.getElementById("errorMessageFirst");
+    const errorMessageSpanLast = document.getElementById("errorMessageLast");
+    const errorMessageSpanEmail = document.getElementById("errorMessageEmail");
+    const firstName = firstNameInput.value;
+    const lastName = lastNameInput.value;
+    const email = emailInput.value;
+
+    if(!firstName) {
+        firstNameInput.style.backgroundColor = "pink"
+        errorMessageSpanFirst.innerText = "You don't put first name"
+    } else if(!lastName) {
+        lastNameInput.style.backgroundColor = "pink"
+        errorMessageSpanLast.innerText = "You don't put last name"
+    }else if(!email) {
+        emailInput.style.backgroundColor = "pink"
+        errorMessageSpanEmail.innerText = "You don't put email"
+    } else {
+        alert(`
+        Full name : ${firstName} ${lastName}
+        Email : ${email}
+        `)
+    }
+}
