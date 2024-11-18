@@ -1,0 +1,63 @@
+
+@font-face {
+	font-family: 'Ezra SIL SR';
+	src: url('fonts/ezrasilsr-webfont.eot?#iefix') format('embedded-opentype'),
+	     url('fonts/ezrasilsr-webfont.woff') format('woff'), 
+	     url('fonts/ezrasilsr-webfont.ttf')  format('truetype'),
+	     url('fonts/ezrasilsr-webfont.svg#EzraSILSR') format('svg');
+}
+
+html {
+    background-color: rgb(116, 220, 220);
+    font-family: 'Ezra SIL SR';
+	direction: rtl;
+	text-align: right;
+}
+
+h3 {
+    text-align: center;
+}
+
+nav {
+    text-align: center;
+}
+
+nav a {
+    margin-right: 20px;
+    text-decoration: none;
+    font-weight: 700;
+}
+
+.header-text {
+    text-align: center;
+}
+
+#img-index {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+    width: 300px;
+    height: 200px;
+}
+
+div {
+    display: grid;
+    grid-template-columns: repeat(3, 100px);
+    gap: 10px;
+    justify-content: center;
+}
+
+div img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+}
+
+#copyrights {
+    /* position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%; */
+    text-align: center;
+}
