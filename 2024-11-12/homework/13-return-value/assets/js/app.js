@@ -1,9 +1,20 @@
-function getRandomNumber(min, max) {
-  return parseInt(Math.random() * ((max + 1) - min)) + min;
+function getRandomNumber() {
+  return Math.floor(Math.random() * 100) + 1;
 }
 
-console.log(getRandomNumber(0, 100));
+function createArray(long) {
+  if(typeof long !== "number") return;
 
-console.log(getRandomNumber(0, 200));
+  const arr = [];
+  for(let i = 1; i <= long; i++){
+    arr.push(getRandomNumber());
+  }
 
-console.log(getRandomNumber(2, 90));
+  return arr;
+}
+
+console.log(createArray(1));
+
+console.log(createArray(3));
+
+console.log(createArray(5));
