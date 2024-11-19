@@ -4,26 +4,26 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <script src="assets/js/app.js"></script>
+        <script defer src="assets/js/app.js"></script>
         <link rel="stylesheet" href="assets/css/style.css">
-        <title>DHTML ex 1</title>
+        <title>DHTML ex 1 (My version)</title>
     </head>
     <body>
-        <form onsubmit="addCarToTable(event)">
+        <form id="carForm" onsubmit="addCarToTable(event)">
             <label for="carName">Car name</label>
-            <input id="carName" type="text" placeholder="Enter car name">
+            <input id="carName" type="text" placeholder="Enter car name" required>
             <br><br>
 
             <label for="volumeMotor">Engine volume</label>
-            <input id="volumeMotor" type="number" placeholder="Enter volume motor">
+            <input id="volumeMotor" type="number" placeholder="Enter volume motor" required>
             <br><br>
 
             <label for="color">Car color</label>
-            <input id="color" type="color" placeholder="Enter color car">
+            <input id="color" type="color" placeholder="Enter color car" required>
             <br><br>
 
             <label for="url">Car image</label>
-            <input id="url" type="url" placeholder="Enter url image">
+            <input id="url" type="url" placeholder="Enter url image" required>
             <br><br>
 
             <button>Add to table</button>
