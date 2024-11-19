@@ -37,3 +37,16 @@ function addFruit() {
         </li>
         `
 }
+
+function addCar() {
+    // Collect data
+    const car = document.getElementById("car").value;
+    const container  = document.getElementById("cars");
+
+    // Generate new HTML from the collected data and render the new html to the DOM
+    container.innerHTML += `
+        <li>
+            ${car}
+        </li>
+        `
+}
