@@ -26,3 +26,14 @@ function populateImages() {
 
     container.innerHTML = newHTML;
 }
+
+function addFruit() {
+    const fruit = prompt("Please enter a fruit");
+    const container  = document.getElementById("fruits");
+
+    container.innerHTML += `
+        <li>
+            ${fruit}
+        </li>
+        `
+}
