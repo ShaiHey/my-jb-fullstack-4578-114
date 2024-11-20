@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script defer src="assets/js/app.js"></script>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+        <link rel="stylesheet" href="assets/css/style.css">
+        <title>Home Work Dynamic HTML 05</title>
+    </head>
+    <body>
+        <form id="formAnimals" onsubmit="addAnimal(event)">
+            <label class="form-label" for="animalType">Type:</label>
+            <input class="form-control-sm" id="animalType" type="text" placeholder="Enter a animal type" required>
+            <br><br>
+            <label class="form-label" for="animalName">Name:</label>
+            <input class="form-control-sm" id="animalName" type="text" placeholder="Enter a animal name" required>
+            <br><br>
+            <label class="form-label" for="animalAge">Age:</label>
+            <input class="form-control-sm" id="animalAge" type="number" placeholder="Enter a animal age" required min="0">
+            <br><br>
+            <label class="form-label" for="animalImage">Image:</label>
+            <input class="form-control-sm" id="animalImage" type="url" placeholder="Enter a animal image" required>
+            <br><br>
+            <button class="btn btn-primary">Add Animal</button>
+        </form>
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Type</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Age</th>
+                    <th scope="col">Image</th>
+                </tr>
+            </thead>
+            <tbody id="animalsContainer">
+
+            </tbody>
+        </table>
+    </body>
+</html>
