@@ -48,7 +48,7 @@ function updateAverage(data) {
     gradeAverage.innerHTML = `Average is : ${sum/grades.length}`;
 }
 
-function addIngredient(event) {
+function addGrades(event) {
     event.preventDefault();
     const data = collectData();
     const newHTML = generateNewHTML(data);
