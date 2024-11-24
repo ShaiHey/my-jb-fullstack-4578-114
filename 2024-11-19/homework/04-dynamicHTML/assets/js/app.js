@@ -13,8 +13,8 @@ function collectData() {
 function generateNewHTML(data) {
     const newHTMLine = `
     <tr>
-        <th>${data.description}</th>
-        <th><img src="${data.url}"></th>
+        <td>${data.description}</td>
+        <td><img src="${data.url}"></td>
     </tr>
     `
     return newHTMLine

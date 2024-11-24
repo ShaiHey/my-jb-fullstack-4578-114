@@ -15,9 +15,9 @@ function collectData() {
 function generateNewHTML(data) {
     const newHTMLine = `
     <tr>
-        <th>${data.firstName}</th>
-        <th>${data.lastName}</th>
-        <th>${data.grade}</th>
+        <td>${data.firstName}</td>
+        <td>${data.lastName}</td>
+        <td>${data.grade}</td>
     </tr>
     `
     return newHTMLine

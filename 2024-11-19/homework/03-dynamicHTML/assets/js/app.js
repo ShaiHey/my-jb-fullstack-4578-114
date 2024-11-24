@@ -9,8 +9,8 @@ function collectData() {
 function generateNewHTML(color) {
     const newHTMLine = `
     <tr>
-        <th>${color}</th>
-        <th class="colors" style="background-color: ${color};"></th>
+        <td>${color}</td>
+        <td class="colors" style="background-color: ${color};"></td>
     </tr>
     `
     return newHTMLine
