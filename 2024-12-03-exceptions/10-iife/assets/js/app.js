@@ -16,5 +16,20 @@
   }
 
   doPrint();
-  
+
+  const form = document.getElementById("formidable");
+  form.addEventListener("submit", event => {
+    event.preventDefault();
+    console.log("Submitting...");
+  });
+
+  const btn = document.getElementById("bouton");
+  btn.addEventListener("click", event => alert("Bouton clicked"));
+
 })()
+
+
+
+// (() => {
+
+// })();
