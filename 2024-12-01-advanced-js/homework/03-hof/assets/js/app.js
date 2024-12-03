@@ -58,9 +58,15 @@ document.write(radiusAllPizza.join("<br>"));
 
 addHr();
 
-const pizzasWithVAT = pizzas.map((pizza, i) => `Pizza ${i+1} (VAT): ${pizza.price * 0.17}`);
-
-document.write(pizzasWithVAT.join("<br>"));
+pizzas
+    .map(({diameter, slices, toppings, price}, i) => ({
+        diameter,
+        slices,
+        toppings,
+        price,
+        vat: price * 0.17
+    }))
+    .forEach((pizza, i) => document.write(`Diameter : ${pizza.diameter}, Slices : ${pizza.slices}, Toppings : ${pizza.toppings}, Price : ${pizza.price}, VAT : ${pizza.vat}<br>`));
 
 addHr();
 
