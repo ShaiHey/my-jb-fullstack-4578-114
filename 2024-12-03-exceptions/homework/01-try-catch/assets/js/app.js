@@ -1,7 +1,7 @@
 "use strict";
 
 (() => {
-  function getAverage(numbersArray) {
+  const getAverage = numbersArray => {
     if (numbersArray === undefined || numbersArray === null) throw new Error("Your array is undefined or null");
     if (!Array.isArray(numbersArray)) throw new Error("This is not an array");
     if (numbersArray.length === 0) throw new Error("Your array is empty");
@@ -39,7 +39,7 @@
       const average = getAverage(numbers);
       console.log(`The average is: ${average}`);
     } catch (error) {
-      console.log(`Error: ${error.message}`);
+      console.error(`Error: ${error}`);
     }
   });
 })();
