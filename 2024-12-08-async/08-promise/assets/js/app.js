@@ -2,43 +2,53 @@
 
 (() => {
 
-  const getNumberOfCandles = (dayNumber, successCallback, errorCallback) => {
-    setTimeout(() => {
-      if(typeof dayNumber !== "number") return errorCallback("Number is required");
-      if(dayNumber < 1) return errorCallback("Day Number must be greater than 0");
-      if(dayNumber > 8) return errorCallback("No Isru Hag in Hanukah");
-      successCallback(dayNumber + 1);
-    }, 3000);
+  const getNumberOfCandles = dayNumber => {
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        if(typeof dayNumber !== "number") return reject("Number is required");
+        if(dayNumber < 1) return reject("Day Number must be greater than 0");
+        if(dayNumber > 8) return reject("No Isru Hag in Hanukah");
+        resolve(dayNumber + 1);
+      }, 10);
+    });
   }
 
   document.getElementById("calc").addEventListener("click", () => {
-    let day = 1;
     let sum = 0;
-    setInterval(() => {
-      getNumberOfCandles(day, result => {
-        console.log(`Today : ${result} total : ${sum+=result}`);
-      }, console.log);
-      day++;
-    }, 3000);
+
+    getNumberOfCandles(1)
+      .then(result => {
+        return result; // JavaScript will now create a promise that is resolved to that is resolved to the value of result
+      })
+      .then(result => {
+        sum+=result;
+        return getNumberOfCandles(2);
+      })
+      .then(result => {
+        sum+=result;
+        return getNumberOfCandles(3);
+      })
+      .then(result => {
+        sum+=result;
+        return getNumberOfCandles(4);
+      })
+      .then(result => {
+        sum+=result;
+        return getNumberOfCandles(5);
+      })
+      .then(result => {
+        sum+=result;
+        return getNumberOfCandles(6);
+      })
+      .then(result => {
+        sum+=result;
+        return getNumberOfCandles(7);
+      })
+      .then(result => {
+        sum+=result;
+        return getNumberOfCandles(8);
+      }).then(finalResult => console.log(`Total : ${finalResult+sum}`))
+      .catch(console.error);
+      
   });
-
-  // getNumberOfCandles(1, day1 => {
-  //   getNumberOfCandles(2, day2 => {
-  //     getNumberOfCandles(3, day3 => {
-  //       getNumberOfCandles(4, day4 => {
-  //         getNumberOfCandles(5, day5 => {
-  //           getNumberOfCandles(6, day6 => {
-  //             getNumberOfCandles(7, day7 => {
-  //               getNumberOfCandles(8, day8 => {
-  //                 console.log(day1 + day2 + day3 + day4 + day5 + day6 + day7 + day8);
-  //               }, console.log)
-  //             }, console.log)
-  //           }, console.log)
-  //         }, console.log)
-  //       }, console.log)
-  //     }, console.log)
-  //   }, console.log)
-  // }, console.log);
-
-  
 })();
