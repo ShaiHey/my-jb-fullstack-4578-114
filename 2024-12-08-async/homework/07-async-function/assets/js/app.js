@@ -5,6 +5,6 @@
     document.body.style.backgroundColor = "Green";
     setTimeout(() => {
       alert("Done");
-    }, 1);
+    }, 0);
   })
 })();
