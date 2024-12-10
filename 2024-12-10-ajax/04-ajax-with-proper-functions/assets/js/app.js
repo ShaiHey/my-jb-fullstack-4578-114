@@ -2,9 +2,10 @@
 
 (() => {
 
-  const getData = async () => {
-    const response = await fetch("https://jsonplaceholder.typicode.com/users");
-    return await response.json();
+  const getData = async url => {
+    // const response = await fetch(url);
+    // return await response.json();
+    return fetch(url).then(response => response.json());
   }
 
   const generateHTML = users => {
@@ -20,7 +21,7 @@
   document.getElementById("displayUsers").addEventListener("click", async () => {
     try {
       // Get data
-      const users = await getData();
+      const users = await getData("https://jsonplaceholder.typicode.com/users");
 
       // Generate HTML
       const newHTML = generateHTML(users);
