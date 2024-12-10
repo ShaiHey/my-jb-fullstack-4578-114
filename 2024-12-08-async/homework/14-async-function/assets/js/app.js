@@ -6,7 +6,7 @@
     navigator.geolocation.getCurrentPosition(loc => {
       span.innerHTML = `longitude ${loc.coords.longitude} - latitude ${loc.coords.latitude}`;
     }, error => {
-      console.log(error);
+      span.innerHTML = error.message;
     })
   })
 })();
