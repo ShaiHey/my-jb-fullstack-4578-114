@@ -2,10 +2,11 @@
 
 (() => {
   const span = document.getElementById("location");
-  navigator.geolocation.getCurrentPosition((loc) => {
-    console.log(loc)
-    span.innerHTML = `longitude ${loc.coords.longitude} - latitude ${loc.coords.latitude}`;
-  }, error => {
-    console.log(error);
+  document.getElementById("displayLocation").addEventListener("click", () => {
+    navigator.geolocation.getCurrentPosition((loc) => {
+      span.innerHTML = `longitude ${loc.coords.longitude} - latitude ${loc.coords.latitude}`;
+    }, error => {
+      console.log(error);
+    })
   })
-})(); 
+})();
