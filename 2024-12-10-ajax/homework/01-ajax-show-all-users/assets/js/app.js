@@ -6,26 +6,23 @@
     return fetch(url).then(response => response.json());
   }
 
-  const extractSuffixFromEmail = email => email.substring(email.lastIndexOf("."));
-
   const generateStatsTable = users => {
     const totalUsers = users.length;
     const sumLongitude = users.reduce((acc, {address}) => acc + +(address.geo.lng), 0);
     const sumLatitude = users.reduce((acc, {address}) => acc + +(address.geo.lat), 0);
 
-    const userEmail = users
-      .map(user => extractSuffixFromEmail(user.email))
-      .reduce((acc, suffix) => {
-        if(acc[suffix]) {
-          acc[suffix]++;
-        } else {
-          acc[suffix] = 1;
-        }
+    const extractExtension = (email) => {
+      const match = email.match(/\.[a-zA-Z]+$/);
+      return match ? match[0] : null;
+    };
 
-        return acc;
-      }, [])
-
-    console.log(userEmail);
+    const extensionCount = users.reduce((acc, { email }) => {
+      const extension = extractExtension(email);
+      if (extension) {
+        acc[extension] = (acc[extension] || 0) + 1;
+      }
+      return acc;
+    }, {});
 
     let HTML = `
         <tr>
@@ -44,11 +41,11 @@
         </tr>
     `
 
-    for (const email in userEmail) {
+    for (const extension in extensionCount) {
       HTML += `
         <tr>
-          <td>Total ${email} Email :</td>
-          <td>${userEmail[email]}</td>
+          <td>Total ${extension} Email :</td>
+          <td>${extensionCount[extension]}</td>
         </tr>
       `;
     }
