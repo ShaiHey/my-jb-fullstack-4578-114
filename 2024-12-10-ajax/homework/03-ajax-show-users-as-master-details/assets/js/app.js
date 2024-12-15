@@ -2,10 +2,8 @@
 
 (() => {
 
-  const getData = async url => {
-    return fetch(url).then(response => response.json());
-  }
-
+  const getData = async url => fetch(url).then(response => response.json());
+  
   const generateUsersList = users => {
     const newHTML = users
       .map(({id, name}) => `
@@ -60,7 +58,7 @@
       // Render HTML
       renderUsersList(usersListHTML);
     } catch (error) {
-      
+      console.warn(error);
     }
   }
 

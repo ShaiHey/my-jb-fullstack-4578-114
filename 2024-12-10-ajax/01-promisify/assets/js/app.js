@@ -2,6 +2,14 @@
 
 (() => {
 
+  const promisify = callback => {
+    return new Promise((resolve, reject) => {
+      callback(resolve, reject);
+    })
+  }
+
+  promisify(navigator.geolocation.getCurrentPosition);
+
   const getCurrentPositionPromise = () => {
     return new Promise((resolve, reject) => {
       navigator.geolocation.getCurrentPosition(resolve, reject);
