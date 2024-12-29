@@ -40,6 +40,7 @@ class Car {
         console.log(`A ${this.year} ${this.make} ${this.model} for sale for ${this.getFullPrice()}`);
     }
     getFullPrice() {
+        // Car.vat = 12 // readonly
         return this.price * Car.vat;
     }
     static horn() {

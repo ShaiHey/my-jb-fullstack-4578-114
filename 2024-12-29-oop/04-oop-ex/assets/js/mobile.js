@@ -1,10 +1,11 @@
-export default class Mobile {
+class Mobile {
     constructor(type, sizeScreen, price, numberOfCamera) {
-        this.pinCode = Math.floor(1000 + Math.random() * 9000);
         this.type = type;
         this.sizeScreen = sizeScreen;
         this.price = price;
         this.numberOfCamera = numberOfCamera;
+        this.pinCode = Math.floor(1000 + Math.random() * 9000);
+        Mobile.totalMobilesCreated++;
     }
     takePicture() {
         console.log(`${this.type} take picture...`);
@@ -22,3 +23,5 @@ export default class Mobile {
         return this.pinCode;
     }
 }
+Mobile.totalMobilesCreated = 0;
+export default Mobile;

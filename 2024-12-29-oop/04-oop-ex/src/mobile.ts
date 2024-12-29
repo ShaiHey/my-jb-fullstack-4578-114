@@ -1,15 +1,14 @@
 export default class Mobile {
-    private type: string
-    private sizeScreen: number
-    private price: number
-    private numberOfCamera: number
     private pinCode: number = Math.floor(1000 + Math.random() * 9000)
+    public static totalMobilesCreated: number = 0
 
-    public constructor(type: string, sizeScreen: number, price: number, numberOfCamera: number) {
-        this.type = type
-        this.sizeScreen = sizeScreen
-        this.price = price
-        this.numberOfCamera = numberOfCamera
+    public constructor(
+        private type: string,
+        private sizeScreen: number,
+        private price: number,
+        private numberOfCamera: number
+    ) {
+        Mobile.totalMobilesCreated++
     }
 
     public takePicture() {

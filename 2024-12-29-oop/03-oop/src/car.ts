@@ -5,8 +5,8 @@ export default class Car {
     // public diesel: boolean
     // public year: number
     // public price: number
-    private serialNumber: number = Math.floor(Math.random() * 1000000)
-    private static vat: number = 1.17
+    private readonly serialNumber: number = Math.floor(Math.random() * 1000000)
+    private static readonly vat: number = 1.17
     private hornVolume: number = Math.random()
 
     // public constructor(make: string, model: string, diesel: boolean, year: number, price: number) {
@@ -28,10 +28,10 @@ export default class Car {
 
     // Shorten constructor
     public constructor(
-        public make: string,
-        public model: string,
-        public diesel: boolean,
-        public year: number,
+        public readonly make: string,
+        public readonly model: string,
+        public readonly diesel: boolean,
+        public readonly year: number,
         public price: number,
     ) {}
 
@@ -48,6 +48,7 @@ export default class Car {
     }
 
     public getFullPrice() {
+        // Car.vat = 12 // readonly
         return this.price * Car.vat
     }
 
