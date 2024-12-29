@@ -1,11 +1,13 @@
 import LivingCreature from "./livingCreature.js";
 
 export default class Animal extends LivingCreature {
+    public static totalAnimalsCreated: number = 0
     public constructor(
         private readonly color: string,
         private readonly breed: string,
         private price: number
     ) {
+        Animal.totalAnimalsCreated++
         super()
     }
 
