@@ -1,5 +1,7 @@
-export default class Animal {
+import LivingCreature from "./livingCreature.js";
+export default class Animal extends LivingCreature {
     constructor(color, breed, price) {
+        super();
         this.color = color;
         this.breed = breed;
         this.price = price;

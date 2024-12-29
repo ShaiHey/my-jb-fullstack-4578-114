@@ -9,6 +9,7 @@ export default class Cat extends Animal {
     ) {super(color, breed, price)}
 
     public display() {
+        super.display()
         console.log(`Number of souls left: ${this.numberOfSoulsLeft}`)
     }
 }

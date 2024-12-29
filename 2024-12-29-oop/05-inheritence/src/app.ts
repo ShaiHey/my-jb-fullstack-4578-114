@@ -9,6 +9,7 @@ const gingo = new Cat(
 )
 
 gingo.display();
+gingo.inhale()
 console.log(gingo.getColor())
 
 const lucky = new Dog(
@@ -19,4 +20,5 @@ const lucky = new Dog(
 )
 
 lucky.display();
-console.log(lucky.getColor())
+lucky.inhale()
+console.log(lucky.getBreed())

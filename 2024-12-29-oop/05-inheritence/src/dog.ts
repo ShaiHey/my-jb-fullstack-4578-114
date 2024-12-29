@@ -9,6 +9,7 @@ export default class Dog extends Animal {
     ) {super(color, breed, price)}
 
     public display() {
+        super.display()
         console.log(`Is trained: ${this.isTrained}`)
     }
 }
