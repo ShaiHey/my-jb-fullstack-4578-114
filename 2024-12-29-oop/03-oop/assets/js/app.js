@@ -11,6 +11,8 @@ micra.displaySerialNumber();
 console.log(micra);
 micra.drive();
 micra.displaySaleInfo();
+Car.horn();
+micra.hornSpecific();
 const maxima = new Car("Nissan", "Maxima", true, 2015, 113000);
 // maxima.init("Nissan", "Maxima", true, 2015, 113000)
 // maxima.make = "Nissan";

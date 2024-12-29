@@ -1,24 +1,20 @@
 import Mobile from "./mobile.js";
 
-const apple = new Mobile();
-const samsung = new Mobile();
-
-apple.type = "iPhone 16 Pro"
-apple.sizeScreen = 6.5
-apple.price = 4700
-apple.numberOfCamera = 4;
+const apple = new Mobile("iPhone 16 Pro", 6.5, 4700, 4);
+const samsung = new Mobile("Galaxy Z Flip6", 6.7, 3600, 3);
 
 apple.turnOn()
 apple.takePicture()
 apple.turnOff()
 
-//
+apple.saleAds()
+console.log(`PinCode is: ${apple.getPinCode()}`)
 
-samsung.type = "Galaxy Z Flip6"
-samsung.sizeScreen = 6.7
-samsung.price = 3600
-samsung.numberOfCamera = 3;
+//
 
 samsung.turnOn()
 samsung.takePicture()
 samsung.turnOff()
+
+samsung.saleAds()
+console.log(`PinCode is: ${samsung.getPinCode()}`)
