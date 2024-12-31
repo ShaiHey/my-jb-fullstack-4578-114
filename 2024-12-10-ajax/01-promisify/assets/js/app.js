@@ -4,11 +4,12 @@
 
   const promisify = callback => {
     return new Promise((resolve, reject) => {
-      callback(resolve, reject);
+      callback(position => resolve(position), error => reject(error));
     })
   }
 
-  promisify(navigator.geolocation.getCurrentPosition);
+  const newFunc = promisify(navigator.geolocation.getCurrentPosition.bind(navigator.geolocation));
+  newFunc.then(msg => console.log(msg))
 
   const getCurrentPositionPromise = () => {
     return new Promise((resolve, reject) => {
