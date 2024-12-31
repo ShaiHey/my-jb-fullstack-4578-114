@@ -8,6 +8,6 @@ export default class Circle extends Shape {
     }
     
     getArea(): number {
-        return Math.PI * this.radius * this.radius
+        return Math.PI * this.radius ** 2 
     }
 }
