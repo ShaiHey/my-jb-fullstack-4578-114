@@ -13,6 +13,9 @@ function getShape(shape: number): Shape {
             return new Circle(5)
         case 3:
             return new Rectangle(10, 5)
+        default:
+            console.log("Invalid shape")
+            break;
     }
 }
 
