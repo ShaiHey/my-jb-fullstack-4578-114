@@ -1,3 +1,11 @@
 .PetStore p {
     color: green;
 }
+
+.PetStore {
+    display: flex;
+    flex-direction: column;
+    border: 2px solid lightgreen;
+    padding: 2px;
+    gap: 50px;
+}

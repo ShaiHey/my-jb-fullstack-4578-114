@@ -5,7 +5,6 @@ import PetStore from './components/pet-store/PetStore'
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <p>Welcome to my website</p>
     <PetStore/>
   </StrictMode>,
 )

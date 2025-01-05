@@ -1,0 +1,10 @@
+.Cheif {
+    display: flex;
+    flex-direction: column;
+    border: 1px red dashed;
+    padding: 2px;
+}
+
+.Cheif img {
+    max-width: 200px;
+}

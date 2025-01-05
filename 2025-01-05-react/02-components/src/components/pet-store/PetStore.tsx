@@ -1,9 +1,12 @@
+import CatList from '../cat-list/CatList';
+import DogList from '../dog-list/DogList';
 import './PetStore.css'
 
-function PetStore() {
+function PetStore(): JSX.Element {
     return (
         <div className='PetStore'>
-            <p className='PetStore'>Hello Pet Store</p>
+            <DogList/>
+            <CatList/>
         </div>
     )
 }
