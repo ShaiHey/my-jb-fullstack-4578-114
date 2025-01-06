@@ -1,0 +1,15 @@
+.Details {
+    grid-row: 2;
+    grid-column: 1;
+    border: 2px solid black;
+    padding: 10px;
+}
+
+.Details > #imageDiv {
+    margin-top: 50px;
+    text-align: center;
+}
+
+.Details img {
+    width: 100px;
+}
