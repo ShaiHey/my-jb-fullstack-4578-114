@@ -3,7 +3,7 @@ import './Footer.css'
 function Footer(): JSX.Element {
     return (
         <div className='Footer'>
-            Footer
+            <p>Server is: {import.meta.env.VITE_REST_SERVER_URL}</p>
         </div>
     )
 }
