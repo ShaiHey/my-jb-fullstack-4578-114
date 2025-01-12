@@ -1,9 +1,9 @@
 import axios from "axios";
-import Follow from "../models/follow/Follow";
+import User from "../models/user/User";
 
 class Followers {
-    async getFollowers(): Promise<Follow[]> {
-        const response = await axios.get<Follow[]>(`${import.meta.env.VITE_REST_SERVER_URL}/allow/follows/followers`);
+    async getFollowers(): Promise<User[]> {
+        const response = await axios.get<User[]>(`${import.meta.env.VITE_REST_SERVER_URL}/allow/follows/followers`);
         return response.data;
     }
 }

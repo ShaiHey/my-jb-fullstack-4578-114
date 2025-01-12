@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react';
 import './Followers.css'
-import Follow from '../../../models/follow/Follow';
 import followersList from '../../../services/followers';
+import User from '../../../models/user/User';
 
 function Followers(): JSX.Element {
-    const [followers, setFollowers] = useState<Follow[]>([]);
+    const [followers, setFollowers] = useState<User[]>([]);
 
     useEffect(() => {
         followersList.getFollowers()

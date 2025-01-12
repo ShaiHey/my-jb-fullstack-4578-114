@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react';
 import './Following.css'
-import Follow from '../../../models/follow/Follow';
 import followingList from '../../../services/following';
+import User from '../../../models/user/User';
 
 function Following(): JSX.Element {
-    const [following, setFollowing] = useState<Follow[]>([]);
+    const [following, setFollowing] = useState<User[]>([]);
 
     useEffect(() => {
         followingList.getFollowing()
@@ -14,6 +14,7 @@ function Following(): JSX.Element {
 
     return (
         <div className='Following'>
+            <h2>Yours following :</h2>
             <ul>
                 {following.map(({id, name}) => <li key={id}>{name}</li>)}
             </ul>
