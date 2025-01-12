@@ -8,6 +8,10 @@ function Feed(): JSX.Element {
     const [feeds, setFeeds] = useState<PostModel[]>([])
 
     useEffect(() => {
+        document.title = "SN - Feed"
+    }, [])
+
+    useEffect(() => {
         feed.getFeed()
             .then(setFeeds)
             .catch(alert)
@@ -19,8 +23,8 @@ function Feed(): JSX.Element {
                 <Post
                     key={post.id}
                     post={post}
-                >
-                </Post>)}
+                />
+            )}
         </div>
     )
 }
