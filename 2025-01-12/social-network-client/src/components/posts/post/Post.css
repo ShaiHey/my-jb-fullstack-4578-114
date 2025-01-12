@@ -1,0 +1,13 @@
+.Post {
+    display: flex;
+    flex-direction: column;
+    border: 1px dashed lightgreen;
+    padding: 4px;
+    margin: 8px;
+    border-radius: 4px;
+    box-shadow: 10px 5px 5px black;
+}
+
+/* .Post:hover {
+    box-shadow: 0 3px 20px -2px rgba(20, 45, 100, 0.1);
+} */
