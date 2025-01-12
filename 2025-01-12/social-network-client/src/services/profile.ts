@@ -8,6 +8,11 @@ class Profile {
         return response.data;
     }
 
+    async getPost(id: string): Promise<Post> {
+        const response = await axios.get<Post>(`${import.meta.env.VITE_REST_SERVER_URL}/posts/${id}`);
+        return response.data;
+    }
+
     async remove(id: string): Promise<boolean> {
         const response = await axios.delete<boolean>(`${import.meta.env.VITE_REST_SERVER_URL}/posts/${id}`);
         return response.data;
@@ -15,6 +20,12 @@ class Profile {
 
     async create(draft: PostDraft): Promise<Post> {
         const response = await axios.post<Post>(`${import.meta.env.VITE_REST_SERVER_URL}/posts/`, draft);
+        return response.data;
+    }
+
+    async update(id: string, draft: PostDraft): Promise<Post> {
+        const { title, body } = draft
+        const response = await axios.patch<Post>(`${import.meta.env.VITE_REST_SERVER_URL}/posts/${id}`, { title, body });
         return response.data;
     }
 }

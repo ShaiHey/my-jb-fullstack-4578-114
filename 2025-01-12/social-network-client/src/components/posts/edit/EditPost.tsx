@@ -1,29 +1,37 @@
-import { useForm } from 'react-hook-form';
-import './NewPost.css'
-import PostDraft from '../../../models/post/PostDraft';
+import { useNavigate, useParams } from 'react-router-dom';
+import './EditPost.css'
+import { useEffect } from 'react';
 import profile from '../../../services/profile';
-import Post from '../../../models/post/Post';
+import { useForm } from 'react-hook-form';
+import PostDraft from '../../../models/post/PostDraft';
 
-interface NewPostProps {
-    addPost(post: Post): void;
-}
+function EditPost(): JSX.Element {
 
-function NewPost({ addPost }: NewPostProps): JSX.Element {
+    const { id } = useParams<'id'>()
+    const { register, handleSubmit, formState, reset } = useForm<PostDraft>()
+    const navigate = useNavigate()
 
-    const { register, handleSubmit, reset, formState } = useForm<PostDraft>()
+    useEffect(() => {
+        if(id) {
+            profile.getPost(id)
+                .then(reset)
+                .catch(alert)
+        }
+    }, [])
 
     async function submit(draft: PostDraft) {
         try {
-            const newPost = await profile.create(draft)
-            reset()
-            addPost(newPost)
+            if(id) {
+                await profile.update(id, draft)
+                navigate('/profile')
+            }
         } catch (error) {
             alert(error)
         }
     }
 
     return (
-        <div className='NewPost'>
+        <div className='EditPost'>
             <form onSubmit={handleSubmit(submit)}>
                 <input type="text" placeholder='Please enter a title post' {...register('title', {
                     required: {
@@ -47,10 +55,10 @@ function NewPost({ addPost }: NewPostProps): JSX.Element {
                     }
                 })}></textarea>
                 <span className='error'>{formState.errors.body?.message}</span>
-                <button>Publish Post</button>
+                <button>Update Post</button>
             </form>
         </div>
     )
 }
 
-export default NewPost;
+export default EditPost;
