@@ -10,7 +10,7 @@ interface NewPostProps {
 
 function NewPost({ addPost }: NewPostProps): JSX.Element {
 
-    const { register, handleSubmit, reset } = useForm<PostDraft>()
+    const { register, handleSubmit, reset, formState } = useForm<PostDraft>()
 
     async function submit(draft: PostDraft) {
         try {
@@ -25,8 +25,28 @@ function NewPost({ addPost }: NewPostProps): JSX.Element {
     return (
         <div className='NewPost'>
             <form onSubmit={handleSubmit(submit)}>
-                <input type="text" placeholder='Please enter a title post' {...register('title')}/>
-                <textarea placeholder='Please enter a body post' {...register('body')}></textarea>
+                <input type="text" placeholder='Please enter a title post' {...register('title', {
+                    required: {
+                        value: true,
+                        message: "You must provide a title"
+                    },
+                    minLength: {
+                        value: 10,
+                        message: "Title must be 10 chars long"
+                    }
+                })}/>
+                <span className='error'>{formState.errors.title?.message}</span>
+                <textarea placeholder='Please enter a body post' {...register('body', {
+                    required: {
+                        value: true,
+                        message: "You must provide a body"
+                    },
+                    minLength: {
+                        value: 20,
+                        message: "Body must be 20 chars long"
+                    }
+                })}></textarea>
+                <span className='error'>{formState.errors.body?.message}</span>
                 <button>Publish</button>
             </form>
         </div>
