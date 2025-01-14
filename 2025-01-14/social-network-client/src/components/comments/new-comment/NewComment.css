@@ -1,0 +1,14 @@
+.NewComment {
+    border: 1px dashed lightseagreen;
+    padding: 4px;
+    margin: 4px;
+}
+
+.NewComment > form {
+    display: flex;
+    flex-direction: column;
+}
+
+.NewComment .error {
+    color: red;
+}
