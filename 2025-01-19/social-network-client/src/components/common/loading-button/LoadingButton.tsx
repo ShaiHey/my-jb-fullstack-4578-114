@@ -17,9 +17,9 @@ export default function LoadingButton(props: LoadingButtonProps): JSX.Element {
     } = props
 
     return (
-        <div className='LoadingButton'>
+        <>
             {!isSubmitting && <button onClick={onClick}>{buttonText}</button>}
-            {isSubmitting && <p>{loadingText}... <i><img src={loadingImageSource}/></i></p>}
-        </div>
+            {isSubmitting && <p>{loadingText}... <i><img id='imageLoading' src={loadingImageSource}/></i></p>}
+        </>
     )
 }

@@ -13,17 +13,9 @@ function Following(): JSX.Element {
     const dispatch = useAppDispatch()
 
     useEffect(() => {
-        (async () => {
-            try {
-                const following = await followingService.getFollowing()
-                dispatch(init(following))
-            } catch (error) {
-                alert(error)
-            }
-        })()
-        // followingService.getFollowing()
-        //     .then(data => dispatch(init(data)))
-        //     .catch(alert)
+        followingService.getFollowing()
+            .then(following => dispatch(init(following)))
+            .catch(alert)
     }, [ dispatch ])
 
     return (

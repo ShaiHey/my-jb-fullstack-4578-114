@@ -1,5 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import Post from "../models/post/Post";
+import Comment from "../models/comment/Comment";
 
 interface FeedState {
     posts: Post[]
@@ -15,10 +16,13 @@ export const feedSlice = createSlice({
     reducers: {
         init: (state, action: PayloadAction<Post[]>) => {
             state.posts = action.payload
+        },
+        addComment: (state, action: PayloadAction<Comment>) => {
+            state.posts.find(p => p.id === action.payload.postId)?.comments.unshift(action.payload)
         }
     }
 })
 
-export const { init } = feedSlice.actions;
+export const { init, addComment } = feedSlice.actions;
 
 export default feedSlice.reducer;

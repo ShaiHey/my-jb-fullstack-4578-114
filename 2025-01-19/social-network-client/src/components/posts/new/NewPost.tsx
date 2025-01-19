@@ -2,22 +2,20 @@ import { useForm } from 'react-hook-form';
 import './NewPost.css'
 import PostDraft from '../../../models/post/PostDraft';
 import profile from '../../../services/profile';
-import Post from '../../../models/post/Post';
 import LoadingButton from '../../common/loading-button/LoadingButton';
+import { useAppDispatch } from '../../../redux/hooks';
+import { addPost } from '../../../redux/profileSlice';
 
-interface NewPostProps {
-    addPost(post: Post): void;
-}
-
-function NewPost({ addPost }: NewPostProps): JSX.Element {
+function NewPost(): JSX.Element {
 
     const { register, handleSubmit, reset, formState } = useForm<PostDraft>()
+    const dispatch = useAppDispatch()
 
     async function submit(draft: PostDraft) {
         try {
             const newPost = await profile.create(draft)
             reset()
-            addPost(newPost)
+            dispatch(addPost(newPost))
         } catch (error) {
             alert(error)
         }
