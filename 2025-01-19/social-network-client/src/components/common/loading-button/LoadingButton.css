@@ -1,0 +1,8 @@
+.LoadingButton i img {
+    width: 20px;
+}
+
+.LoadingButton > button {
+    display: flex;
+    flex-direction: column;
+}
