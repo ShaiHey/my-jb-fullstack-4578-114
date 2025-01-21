@@ -1,4 +1,89 @@
-.Login > form {
+.Login {
     display: flex;
+    justify-content: center;
+    align-items: center;
     flex-direction: column;
+    width: 100%;
+    max-width: 400px;
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.Login .login-form {
+    width: 100%;
+}
+
+.Login h1 {
+    font-size: 2rem;
+    color: #333;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.Login p {
+    font-size: 1rem;
+    color: #666;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.Login .input-group {
+    margin-bottom: 20px;
+}
+
+.Login .input-group label {
+    font-size: 1rem;
+    color: #333;
+    margin-bottom: 5px;
+    display: block;
+}
+
+.Login .input-group input {
+    width: 100%;
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    outline: none;
+    transition: border 0.3s ease;
+}
+
+.Login .input-group input:focus {
+    border-color: #007BFF;
+}
+
+.Login button {
+    width: 100%;
+    padding: 12px;
+    font-size: 1.1rem;
+    color: #fff;
+    background-color: #007BFF;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.Login button:hover {
+    background-color: #0056b3;
+}
+
+.Login button:active {
+    background-color: #004085;
+}
+
+@media (max-width: 500px) {
+    .Login {
+        padding: 20px;
+    }
+
+    .Login h1 {
+        font-size: 1.5rem;
+    }
+
+    .Login p {
+        font-size: 0.9rem;
+    }
 }

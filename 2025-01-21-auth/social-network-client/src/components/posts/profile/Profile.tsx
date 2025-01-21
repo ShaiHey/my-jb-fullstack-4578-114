@@ -7,16 +7,18 @@ import Loading from '../../common/loading/Loading';
 import useTitle from '../../../hooks/useTitle';
 import { useAppDispatch, useAppSelector } from '../../../redux/hooks';
 import { init } from '../../../redux/profileSlice';
+import useService from '../../../hooks/useService';
 
 function Profile(): JSX.Element {
     const posts = useAppSelector(state => state.profile.posts)
     const dispatch = useAppDispatch()
+    const profileService = useService(profile)
 
     useTitle("SN - Profile")
 
     useEffect(() => {
         if(posts.length === 0){
-            profile.getProfile()
+            profileService.getProfile()
             .then(posts => dispatch(init(posts)))
             .catch(alert)
         }

@@ -34,3 +34,12 @@
 .Layout > * {
     border: 1px dashed lightblue;
 }
+
+.LoginDiv {
+    background-color: #f7f7f7;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    padding: 20px;
+}

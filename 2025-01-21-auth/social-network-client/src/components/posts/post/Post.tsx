@@ -1,12 +1,13 @@
 import { useNavigate } from 'react-router-dom';
 import PostModel from '../../../models/post/Post';
-import profile from '../../../services/profile';
+import ProfileService from '../../../services/profile';
 import './Post.css'
 import PostComments from '../../comments/post-comments/PostComments';
 import { useState } from 'react';
 import LoadingButton from '../../common/loading-button/LoadingButton';
 import { useAppDispatch } from '../../../redux/hooks';
 import { removePost } from '../../../redux/profileSlice';
+import useService from '../../../hooks/useService';
 
 interface PostProps {
     post: PostModel;
@@ -19,6 +20,7 @@ function Post({ post, isAllowActions }: PostProps): JSX.Element {
     const navigate = useNavigate()
     const [loadingDelete, setLoadingDelete] = useState<boolean>(false);
     const dispatch = useAppDispatch()
+    const profileService = useService(ProfileService);
 
     const formattedDate = new Date(createdAt).toLocaleDateString('en-US', {
         year: 'numeric',
@@ -30,7 +32,7 @@ function Post({ post, isAllowActions }: PostProps): JSX.Element {
         if(confirm(`Are you sure you want to delete "${title}"`)) {
             try {
                 setLoadingDelete(true)
-                await profile.remove(id)
+                await profileService.remove(id)
                 dispatch(removePost({id}))
             } catch (error) {
                 alert(error)

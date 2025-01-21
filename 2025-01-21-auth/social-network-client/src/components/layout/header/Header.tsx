@@ -1,19 +1,20 @@
 import { NavLink } from 'react-router-dom';
 import './Header.css'
 import logoImage from '../../../assets/images/logo.png'
-import { useContext, useMemo } from 'react';
+import useUsername from '../../../hooks/useUsername';
+import { useContext } from 'react';
 import { AuthContext } from '../../auth/auth/Auth';
-import { jwtDecode } from 'jwt-decode';
-import User from '../../../models/user/User';
 
 function Header(): JSX.Element {
 
-    const { jwt } = useContext(AuthContext)!
+    const name = useUsername()
+    const { logout } = useContext(AuthContext)!
 
-    const name = useMemo(() => {
-        const { name } = jwtDecode<User>(jwt)
-        return name
-    }, [ jwt ])
+    function logoutMe() {
+        if(confirm("Are you sure to logout ?")){
+            logout()
+        }
+    }
 
     return (
         <div className='Header'>
@@ -26,7 +27,7 @@ function Header(): JSX.Element {
                 </nav>
             </div>
             <nav>
-                Hello {name} | <button>Logout</button>
+                Hello {name} | <button onClick={logoutMe}>Logout</button>
             </nav>
         </div>
     )

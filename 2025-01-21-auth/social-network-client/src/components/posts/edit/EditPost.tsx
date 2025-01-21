@@ -1,12 +1,13 @@
 import { useNavigate, useParams } from 'react-router-dom';
 import './EditPost.css'
 import { useEffect } from 'react';
-import profile from '../../../services/profile';
+import ProfileService from '../../../services/profile';
 import { useForm } from 'react-hook-form';
 import PostDraft from '../../../models/post/PostDraft';
 import LoadingButton from '../../common/loading-button/LoadingButton';
 import { useAppDispatch, useAppSelector } from '../../../redux/hooks';
 import { update } from '../../../redux/profileSlice';
+import useService from '../../../hooks/useService';
 
 function EditPost(): JSX.Element {
 
@@ -15,11 +16,12 @@ function EditPost(): JSX.Element {
     const navigate = useNavigate()
     const editPost = useAppSelector(state => state.profile.posts.find(p => p.id === id))
     const dispatch = useAppDispatch();
+    const profileService = useService(ProfileService);
 
     useEffect(() => {
         if(editPost) reset(editPost);
         else {
-            profile.getPost(id!)
+            profileService.getPost(id!)
                 .then(reset)
                 .catch(alert)
         }
@@ -28,7 +30,7 @@ function EditPost(): JSX.Element {
     async function submit(draft: PostDraft) {
         try {
             if (id) {
-                const updatingPost = await profile.update(id, draft)
+                const updatingPost = await profileService.update(id, draft)
                 dispatch(update(updatingPost))
                 navigate('/profile')
             }

@@ -1,12 +1,13 @@
 import User from '../../../models/user/User';
 import './Follow.css'
 import picImage from '../../../assets/images/pic.jpg'
-import following from '../../../services/following';
+import FollowingService from '../../../services/following';
 import { useState } from 'react';
 import LoadingButton from '../../common/loading-button/LoadingButton';
 import { useAppDispatch, useAppSelector } from '../../../redux/hooks';
 import { unfollow, follow as followAction } from '../../../redux/followingSlice';
 import { needReload } from '../../../redux/feedSlice';
+import useService from '../../../hooks/useService';
 
 interface FollowProps {
     follow: User
@@ -16,6 +17,7 @@ function Follow({ follow }: FollowProps): JSX.Element {
     const { id, name } = follow
     const [loading, setLoading] = useState<boolean>(false);
     const dispatch = useAppDispatch()
+    const followingService = useService(FollowingService)
 
     const isFollowing = useAppSelector(state => state.following.following.find(f => f.id === id))
 
@@ -23,7 +25,7 @@ function Follow({ follow }: FollowProps): JSX.Element {
         if(confirm(`Are you sure you want to unfollow "${name}" ?`)) {
             try {
                 setLoading(true)
-                await following.unfollow(id)
+                await followingService.unfollow(id)
                 dispatch(unfollow({userId: id}))
             } catch (error) {
                 alert(error)
@@ -36,7 +38,7 @@ function Follow({ follow }: FollowProps): JSX.Element {
     async function followMe() {
         try {
             setLoading(true)
-            await following.follow(id)
+            await followingService.follow(id)
             dispatch(followAction(follow))
             dispatch(needReload(true))
         } catch (error) {

@@ -1,16 +1,19 @@
 import { useEffect } from 'react';
 import './Following.css'
-import followingService from '../../../services/following';
 import Follow from '../../follows/follow/Follow';
 import Loading from '../../common/loading/Loading';
 import { useAppDispatch, useAppSelector } from '../../../redux/hooks';
 import { init } from '../../../redux/followingSlice';
+import useService from '../../../hooks/useService';
+import FollowingService from '../../../services/following';
 
 function Following(): JSX.Element {
     // const [following, setFollowing] = useState<User[]>([]);
     const following = useAppSelector(state => state.following.following)
 
     const dispatch = useAppDispatch()
+
+    const followingService = useService(FollowingService)
 
     useEffect(() => {
         followingService.getFollowing()

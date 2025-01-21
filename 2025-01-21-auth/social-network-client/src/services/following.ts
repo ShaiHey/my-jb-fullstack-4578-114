@@ -1,22 +1,21 @@
-import axios from "axios";
 import User from "../models/user/User";
+import AuthAware from "./auth-aware/AuthAware";
 
-class Following {
+class Following extends AuthAware {
     async getFollowing(): Promise<User[]> {
-        const response = await axios.get<User[]>(`${import.meta.env.VITE_REST_SERVER_URL}/follows/following`);
+        const response = await this.axiosInstance.get<User[]>(`${import.meta.env.VITE_REST_SERVER_URL}/follows/following`);
         return response.data;
     }
 
     async unfollow(id: string): Promise<boolean> {
-        const response = await axios.post<boolean>(`${import.meta.env.VITE_REST_SERVER_URL}/follows/unfollow/${id}`);
+        const response = await this.axiosInstance.post<boolean>(`${import.meta.env.VITE_REST_SERVER_URL}/follows/unfollow/${id}`);
         return response.data;
     }
 
     async follow(id: string): Promise<User> {
-        const response = await axios.post<User>(`${import.meta.env.VITE_REST_SERVER_URL}/follows/follow/${id}`);
+        const response = await this.axiosInstance.post<User>(`${import.meta.env.VITE_REST_SERVER_URL}/follows/follow/${id}`);
         return response.data;
     }
 }
 
-const following = new Following();
-export default following;
+export default Following;

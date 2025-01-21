@@ -1,22 +1,24 @@
 import { useEffect } from 'react';
 import './Feed.css'
-import feed from '../../../services/feed';
+import FeedService from '../../../services/feed';
 import Post from '../post/Post';
 import useTitle from '../../../hooks/useTitle';
 import Loading from '../../common/loading/Loading';
 import { useAppDispatch, useAppSelector } from '../../../redux/hooks';
 import { init } from '../../../redux/feedSlice';
+import useService from '../../../hooks/useService';
 
 function Feed(): JSX.Element {
     const feeds = useAppSelector(state => state.feed.posts);
     const needReload = useAppSelector(state => state.feed.needReload);
     const dispatch = useAppDispatch()
+    const feedService = useService(FeedService)
 
     useTitle("SN - Feed")
 
     useEffect(() => {
         if(feeds.length === 0){
-            feed.getFeed()
+            feedService.getFeed()
             .then(posts => dispatch(init(posts)))
             .catch(alert)
         }

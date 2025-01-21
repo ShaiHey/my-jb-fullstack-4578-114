@@ -14,8 +14,8 @@ function Layout(): JSX.Element {
     const isLoggedIn: boolean = !!jwt
 
     return (
-        <div className='Layout'>
-            {isLoggedIn ? <>
+        <>
+            {isLoggedIn ? <div className='Layout'>
                 <header>
                     <Header />
                 </header>
@@ -31,10 +31,10 @@ function Layout(): JSX.Element {
                 <footer>
                     <Footer />
                 </footer>
-            </> : <>
+            </div> : <div className='LoginDiv'>
                 <Login />
-            </>}
-        </div>
+            </div>}
+        </>
     )
 }
 
