@@ -18,6 +18,7 @@ export const feedSlice = createSlice({
     reducers: {
         init: (state, action: PayloadAction<Post[]>) => {
             state.posts = action.payload
+            state.needReload = false
         },
         addComment: (state, action: PayloadAction<Comment>) => {
             state.posts.find(p => p.id === action.payload.postId)?.comments.unshift(action.payload)

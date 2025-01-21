@@ -10,7 +10,7 @@ import useService from '../../../hooks/useService';
 
 function Feed(): JSX.Element {
     const feeds = useAppSelector(state => state.feed.posts);
-    const needReload = useAppSelector(state => state.feed.needReload);
+    const isNewContent = useAppSelector(state => state.feed.needReload);
     const dispatch = useAppDispatch()
     const feedService = useService(FeedService)
 
@@ -24,14 +24,24 @@ function Feed(): JSX.Element {
         }
     }, [])
 
+    async function reload() {
+        try {
+            feedService.getFeed()
+                .then(posts => dispatch(init(posts)))
+                .catch(alert)
+        } catch (error) {
+            alert(error)
+        }
+    }
+
     return (
         <div className='Feed'>
             { feeds.length === 0 && <Loading />}
 
             { feeds.length > 0 && <>
-                {needReload && <div>
+                {isNewContent && <div>
                     You have new posts in your feed.
-                    <button onClick={() => {window.location.href="/feed"}}>Reload Feed</button>
+                    <button onClick={reload}>Reload Feed</button>
                 </div>
                 }
                 

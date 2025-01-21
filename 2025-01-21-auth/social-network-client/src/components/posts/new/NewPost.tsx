@@ -31,10 +31,10 @@ function NewPost(): JSX.Element {
                         value: true,
                         message: "You must provide a title"
                     },
-                    minLength: {
-                        value: 10,
-                        message: "Title must be 10 chars long"
-                    }
+                    // minLength: {
+                    //     value: 10,
+                    //     message: "Title must be 10 chars long"
+                    // }
                 })}/>
                 <span className='error'>{formState.errors.title?.message}</span>
                 <textarea placeholder='Please enter a body post' {...register('body', {

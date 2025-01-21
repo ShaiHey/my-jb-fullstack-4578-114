@@ -27,6 +27,7 @@ function Follow({ follow }: FollowProps): JSX.Element {
                 setLoading(true)
                 await followingService.unfollow(id)
                 dispatch(unfollow({userId: id}))
+                dispatch(needReload(true))
             } catch (error) {
                 alert(error)
             } finally {
