@@ -1,7 +1,6 @@
 const { createServer } = require('http');
 
 const users = [
-    { name: 'Yuval', email: 'yuval@gmail.com', age: 23 },
     { name: 'Alice', email: 'alice@example.com', age: 30 },
     { name: 'Bob', email: 'bob@example.com', age: 25 },
     { name: 'Charlie', email: 'charlie@example.com', age: 35 },
@@ -18,16 +17,43 @@ const list = `
 const requestListener = (request, response) => {
     switch (request.url) {
         case "/users":
-            response.setHeader('Content-Type', 'application/json');
-            response.end(JSON.stringify(users));
+            switch (request.method) {
+                case 'GET':
+                    response.setHeader('Content-Type', 'application/json');
+                    response.end(JSON.stringify(users));
+                break;
+
+                case 'POST':
+                    response.end('User added');
+                break;
+                
+                default:
+                    response.writeHead(404)
+                    response.end('Unknown operation')
+                break;
+            }
         break;
 
         case "/list":
-            response.setHeader('Content-Type', 'text/csv');
-            response.end(list)
+            switch (request.method) {
+                case 'GET':
+                    response.setHeader('Content-Type', 'text/csv');
+                    response.end(list)
+                break;
+
+                case 'POST':
+                    response.end('List saved');
+                break;
+
+                default:
+                    response.writeHead(404)
+                    response.end('Unknown operation')
+                break;
+            }
         break;
     
         default:
+            response.writeHead(404)
             response.end('Unknown operation')
         break;
     }
