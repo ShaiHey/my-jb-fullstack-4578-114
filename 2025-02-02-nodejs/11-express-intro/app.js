@@ -21,8 +21,9 @@ const logRequest = (req, res, next) => {
 }
 
 const connectToMySQL = (req, res, next) => {
-    console.log(`Connecting to mysql....`);
-    next();
+    console.log('Connecting to mysql...')
+    if (Math.random() > 0.5 ) next ('there was an error connecting to the database')
+    else next();
 }
 
 const disconnectFromMySQL = (req, res, next) => {
@@ -57,11 +58,16 @@ const sendWelcomeEmail = (req, res, next) => {
 
 const errorLogger = (err, req, res, next) => {
     console.log(`There was an error somewhere and this is it: ${err}`)
-    next();
+    next(err);
 }
 
 const pagerDuty = (err, req, res, next) => {
     console.log('Sending the SMS to the current TORAN')
+    next(err)
+}
+
+const errorResponder = (err, req, res, next) => {
+    res.status(err.statusCode || 500).send(err.message || 'Internal server error')
 }
 
 const app = express();
@@ -79,5 +85,6 @@ app.use(notFound);
 
 app.use(errorLogger)
 app.use(pagerDuty)
+app.use(errorResponder)
 
 app.listen(3000, () => console.log('Express app started on port 3000...'));
