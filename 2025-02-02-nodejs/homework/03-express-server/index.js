@@ -14,25 +14,31 @@ const logRequest = (req, res, next) => {
 }
 
 const notFound = (req, res, next) => {
-    res.status(404);
-    res.send('Page not found..');
+    res.status(404).send('Page not found..');
 }
 
 const errorLogger = async (err, req, res, next) => {
     await fs.appendFile('errorLog.txt', `${new Date().toISOString()} - ${err}\n`);
-    next();
 }
 
 const getUsers = async (req, res, next) => {
-    const users = await getData('https://jsonplaceholder.typicode.com/users');
-    res.json(users);
+    try {
+        const users = await getData('https://jsonplaceholder.typicode.com/users');
+        res.json(users);
+    } catch (error) {
+        next(error)
+    }
 }
 
 const getUser = async (req, res, next) => {
     const userId = req.query.id;
     if(userId) {
-        const user = await getData(`https://jsonplaceholder.typicode.com/users/${userId}`);
-        res.json(user);
+        try {
+            const user = await getData(`https://jsonplaceholder.typicode.com/users/${userId}`);
+            res.json(user);
+        } catch (error) {
+            next(error)
+        }
     } else {
         res.send('User not define');
     }
