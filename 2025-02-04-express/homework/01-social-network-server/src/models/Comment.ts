@@ -11,12 +11,12 @@ export default class Comment extends Model {
 
     @AllowNull(false)
     @Column(DataType.UUID)
-    post_id: string;
+    postId: string;
 
 
     @AllowNull(false)
     @Column(DataType.UUID)
-    user_id: string;
+    userId: string;
 
     @AllowNull(false)
     @Column(DataType.TEXT)

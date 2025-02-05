@@ -11,7 +11,7 @@ export default class Post extends Model {
 
     @AllowNull(false)
     @Column(DataType.UUID)
-    user_id: string;
+    userId: string;
 
 
     @AllowNull(false)
