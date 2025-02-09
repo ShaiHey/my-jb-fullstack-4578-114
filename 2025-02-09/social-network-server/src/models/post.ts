@@ -24,7 +24,7 @@ export default class Post extends Model {
     @Column(DataType.TEXT)
     body: string;
 
-    @AllowNull(false)
+    @AllowNull(true)
     @Column(DataType.STRING)
     imageUrl: string;
 

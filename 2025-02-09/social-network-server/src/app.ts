@@ -1,4 +1,4 @@
-import express from "express";
+import express, { json } from "express";
 import config from "config";
 import sequelize from "./db/sequelize";
 import profileRouter from "./routers/profile";
@@ -16,6 +16,8 @@ const server = express();
     await sequelize.sync({ force })
 
     // Middlewares
+    server.use(json())
+
     server.use('/profile', profileRouter)
 
     // Special notFound middleware
