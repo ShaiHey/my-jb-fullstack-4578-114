@@ -1,7 +1,12 @@
 {
     "app": {
         "port": 80,
-        "name": "Twitter Prod",
-        "logging": false
+        "name": "Twitter Prod"
+    },
+    "sequelize": {
+        "logging": false,
+        "sync": {
+            "force": false
+        }
     }
 }

@@ -1,8 +1,7 @@
 {
     "app": {
         "port": 3000,
-        "name": "Twitter Dev",
-        "logging": true
+        "name": "Twitter Dev"
     },
     "db": {
         "host": "localhost",
@@ -10,5 +9,11 @@
         "username": "root",
         "password": "",
         "database": "twitter"
+    },
+    "sequelize": {
+        "logging": true,
+        "sync": {
+            "force": false
+        }
     }
 }
