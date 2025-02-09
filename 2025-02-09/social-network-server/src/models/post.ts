@@ -24,6 +24,10 @@ export default class Post extends Model {
     @Column(DataType.TEXT)
     body: string;
 
+    @AllowNull(false)
+    @Column(DataType.STRING)
+    imageUrl: string;
+
     @BelongsTo(() => User)
     user: User;
 
