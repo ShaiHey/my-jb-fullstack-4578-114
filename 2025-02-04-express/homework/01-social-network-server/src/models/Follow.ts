@@ -10,5 +10,5 @@ export default class Follow extends Model {
 
     @PrimaryKey
     @Column(DataType.UUID)
-    foloweeId: string;
+    followeeId: string;
 }

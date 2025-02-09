@@ -1,9 +1,9 @@
 import { Sequelize } from "sequelize-typescript";
-import User from "../models/User";
+import User from "../models/user";
 import config from "config";
-import Post from "../models/Post";
-import Comment from "../models/Comment";
-import Follow from "../models/Follow";
+import Post from "../models/post";
+import Comment from "../models/comment";
+import Follow from "../models/follow";
 
 const logging = config.get<boolean>('app.logging');
 

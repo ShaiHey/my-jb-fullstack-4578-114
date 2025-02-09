@@ -13,9 +13,8 @@ export default class Post extends Model {
     @Column(DataType.UUID)
     userId: string;
 
-
     @AllowNull(false)
-    @Column
+    @Column(DataType.STRING(40))
     title: string;
 
     @AllowNull(false)

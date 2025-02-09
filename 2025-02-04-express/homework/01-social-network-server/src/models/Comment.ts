@@ -13,7 +13,6 @@ export default class Comment extends Model {
     @Column(DataType.UUID)
     postId: string;
 
-
     @AllowNull(false)
     @Column(DataType.UUID)
     userId: string;
