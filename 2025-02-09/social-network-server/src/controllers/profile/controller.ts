@@ -3,6 +3,16 @@ import User from "../../models/user";
 import Post from "../../models/post";
 import Comment from "../../models/comment";
 
+const postIncludes = {
+    include: [
+        {
+            model: Comment,
+            include: [ User ]
+        },
+        User
+    ]
+}
+
 export async function getProfile(req: Request, res: Response, next: NextFunction) {
     try {
         const userId = '1230ae30-dc4f-4752-bd84-092956f5c633'
@@ -11,13 +21,7 @@ export async function getProfile(req: Request, res: Response, next: NextFunction
             include: [
                 {
                     model: Post,
-                    include: [
-                        {
-                            model: Comment,
-                            include: [ User ]
-                        }
-                        , User
-                    ]
+                    ...postIncludes
                 }
             ]
         });
@@ -30,15 +34,7 @@ export async function getProfile(req: Request, res: Response, next: NextFunction
 export async function getPost(req: Request, res: Response, next: NextFunction) {
     try {
         const postId = req.params.id
-        const post = await Post.findByPk(postId, {
-            include: [
-                {
-                    model: Comment,
-                    include: [ User ]
-                },
-                User
-            ]
-        })
+        const post = await Post.findByPk(postId, postIncludes)
         res.json(post)
     } catch (error) {
         next(error)
@@ -73,10 +69,21 @@ export async function deletePost(req: Request, res: Response, next: NextFunction
 export async function createPost(req: Request, res: Response, next: NextFunction) {
     try {
         const userId = '1230ae30-dc4f-4752-bd84-092956f5c633'
-        const post = await Post.create({
-            ...req.body,
-            userId
-        });
+        const post = await Post.create({ ...req.body, userId });
+        await post.reload(postIncludes)
+        res.json(post)
+    } catch (error) {
+        next(error)
+    }
+}
+
+export async function updatePost(req: Request, res: Response, next: NextFunction) {
+    try {
+        const post = await Post.findByPk(req.params.id, postIncludes)
+        const { title, body } = req.body
+        post.title = title
+        post.body = body
+        await post.save()
         res.json(post)
     } catch (error) {
         next(error)
