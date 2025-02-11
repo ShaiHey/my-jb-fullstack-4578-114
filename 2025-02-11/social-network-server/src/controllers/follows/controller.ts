@@ -3,6 +3,7 @@ import User from "../../models/user";
 import Follow from "../../models/follow";
 import RequestParams from "../../models/request-params";
 import { col } from "sequelize";
+import TwitterError from "../../errors/twitter-error";
 
 export async function getFollowers(req: Request, res: Response, next: NextFunction) {
     try {
@@ -69,10 +70,10 @@ export async function unfollow(req: Request<RequestParams>, res: Response, next:
             }
         })
 
-        if(isUnfollowed === 0) return next({
-            status: 404,
-            message: "Tried to delete unexciting record"
-        });
+        if(isUnfollowed === 0) return next(new TwitterError(
+            404,
+            "Tried to delete unexciting record"
+        ));
         
         res.json({ success: true });
     } catch (error) {

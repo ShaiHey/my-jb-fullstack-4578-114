@@ -8,6 +8,7 @@ import notFound from "./middlewares/not-found";
 import followsRouter from "./routers/follows";
 import commentsRouter from "./routers/comments";
 import feedRouter from "./routers/feed";
+import authRouter from "./routers/auth";
 
 const port = config.get<number>('app.port');
 const name = config.get<string>('app.name');
@@ -25,6 +26,7 @@ const server = express();
     server.use('/follows', followsRouter)
     server.use('/comments', commentsRouter)
     server.use('/feed', feedRouter)
+    server.use('/auth', authRouter)
 
     // Special notFound middleware
     server.use(notFound);

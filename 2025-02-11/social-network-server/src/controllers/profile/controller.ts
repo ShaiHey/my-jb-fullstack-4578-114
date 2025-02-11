@@ -3,6 +3,7 @@ import User from "../../models/user";
 import Post from "../../models/post";
 import RequestParams from "../../models/request-params";
 import postIncludes from '../common/post-includes'
+import TwitterError from "../../errors/twitter-error";
 
 export async function getProfile(req: Request, res: Response, next: NextFunction) {
     try {
@@ -43,10 +44,10 @@ export async function deletePost(req: Request<RequestParams>, res: Response, nex
             where: { id }
         })
 
-        if(deletedRows === 0) return next({
-            status: 404,
-            message: "The post you were trying to delete does not exist"
-        })
+        if(deletedRows === 0) return next(new TwitterError(
+            404,
+            "The post you were trying to delete does not exist"
+        ))
 
         res.json({
             success: true

@@ -1,7 +1,9 @@
 {
     "app": {
         "port": 3000,
-        "name": "Twitter Dev"
+        "name": "Twitter Dev",
+        "secret": "MySecret",
+        "jwtSecret": "MyJwtSecret"
     },
     "db": {
         "host": "localhost",
