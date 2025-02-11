@@ -21,7 +21,7 @@ export async function getFeed(req: Request, res: Response, next: NextFunction) {
 
         const feed = user.following.reduce((acc: Post[], { posts }) => {
             return [...acc, ...posts]
-        }, [])
+        }, []).sort((a: Post, b: Post) => a.createdAt < b.createdAt ? 1 : -1)
 
         res.json(feed)
 
