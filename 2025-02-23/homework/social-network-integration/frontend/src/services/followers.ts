@@ -1,0 +1,11 @@
+import User from "../models/user/User";
+import AuthAware from "./auth-aware/AuthAware";
+
+class Followers extends AuthAware {
+    async getFollowers(): Promise<User[]> {
+        const response = await this.axiosInstance.get<User[]>(`${import.meta.env.VITE_REST_SERVER_URL}/follows/followers`);
+        return response.data;
+    }
+}
+
+export default Followers;
