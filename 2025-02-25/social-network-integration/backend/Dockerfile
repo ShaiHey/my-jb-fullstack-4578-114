@@ -5,4 +5,4 @@ RUN npm install
 COPY ./ ./
 RUN npm run build
 RUN rm -rf ./src
-CMD NODE_ENV=docker npm start
+CMD npm start

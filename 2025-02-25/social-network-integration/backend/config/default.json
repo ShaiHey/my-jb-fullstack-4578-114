@@ -6,8 +6,8 @@
         "jwtSecret": "MyJwtSecret"
     },
     "db": {
-        "dialect": "postgres",
-        "port": 5432,
+        "dialect": "mysql",
+        "port": 3306,
         "host": "localhost",
         "username": "root",
         "password": "",
