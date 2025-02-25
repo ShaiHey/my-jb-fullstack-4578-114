@@ -1,0 +1,22 @@
+{
+    "app": {
+        "port": 3000,
+        "name": "Twitter Dev",
+        "secret": "MySecret",
+        "jwtSecret": "MyJwtSecret"
+    },
+    "db": {
+        "dialect": "postgres",
+        "port": 5432,
+        "host": "localhost",
+        "username": "root",
+        "password": "",
+        "database": "twitter"
+    },
+    "sequelize": {
+        "logging": true,
+        "sync": {
+            "force": false
+        }
+    }
+}
