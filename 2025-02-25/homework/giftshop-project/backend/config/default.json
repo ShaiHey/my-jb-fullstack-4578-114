@@ -1,0 +1,22 @@
+{
+    "app": {
+        "port": 3000,
+        "name": "Gift shop",
+        "secret": "MySecret",
+        "jwtSecret": "MyJwtSecret"
+    },
+    "db": {
+        "dialect": "mysql",
+        "port": 3306,
+        "host": "localhost",
+        "username": "root",
+        "password": "",
+        "database": "giftshop"
+    },
+    "sequelize": {
+        "logging": true,
+        "sync": {
+            "force": false
+        }
+    }
+}

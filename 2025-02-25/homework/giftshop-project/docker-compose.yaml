@@ -2,7 +2,7 @@ version: '3.8'
 
 services:
   database:
-    container_name: sn-compose-database
+    container_name: gift-compose-database
     ports:
       - 3306:3306
     environment:
@@ -17,7 +17,7 @@ services:
       retries: 5
       start_period: 30s
   backend:
-    container_name: sn-compose-backend
+    container_name: gift-compose-backend
     ports:
       - 3000:3000
     environment:
@@ -27,7 +27,7 @@ services:
       database:
         condition: service_healthy
   frontend:
-    container_name: sn-compose-frontend
+    container_name: gift-compose-frontend
     ports:
       - 5173:80
     build: ./frontend
