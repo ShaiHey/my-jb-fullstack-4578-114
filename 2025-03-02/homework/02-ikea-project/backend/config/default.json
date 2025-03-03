@@ -1,0 +1,22 @@
+{
+    "app": {
+        "port": 3000,
+        "name": "IKEA app",
+        "secret": "MySecret",
+        "jwtSecret": "MyJwtSecret"
+    },
+    "db": {
+        "dialect": "mysql",
+        "port": 3306,
+        "host": "localhost",
+        "username": "root",
+        "password": "",
+        "database": "ikea"
+    },
+    "sequelize": {
+        "logging": true,
+        "sync": {
+            "force": false
+        }
+    }
+}

@@ -1,0 +1,10 @@
+.List > h2 {
+    display: flex;
+    justify-content: center;
+}
+
+.List > .CardContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}

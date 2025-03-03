@@ -1,0 +1,15 @@
+.Add {
+    border: 1px dashed lightseagreen;
+    padding: 4px;
+    margin: 4px;
+}
+
+.Add > form {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.Add .error {
+    color: red;
+}
