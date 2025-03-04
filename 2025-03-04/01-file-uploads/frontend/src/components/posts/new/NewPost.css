@@ -9,6 +9,10 @@
     flex-direction: column;
 }
 
+.NewPost img {
+    width: 300px;
+}
+
 .NewPost .error {
     color: red;
 }

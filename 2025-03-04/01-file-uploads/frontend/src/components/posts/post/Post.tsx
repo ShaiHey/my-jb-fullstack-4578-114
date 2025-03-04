@@ -18,7 +18,7 @@ interface PostProps {
 }
 
 function Post({ post, isAllowActions, isNew }: PostProps): JSX.Element {
-    const { id, title, body, createdAt, comments} = post
+    const { id, title, body, createdAt, comments, imageUrl } = post
     const { name } = post.user
     const navigate = useNavigate()
     const [loadingDelete, setLoadingDelete] = useState<boolean>(false);
@@ -59,6 +59,9 @@ function Post({ post, isAllowActions, isNew }: PostProps): JSX.Element {
             <div>
                 by {name} on {formattedDate}
             </div>
+            {imageUrl && <div>
+                <img src={imageUrl} />
+            </div>}
             <div>{body}</div>
             {isAllowActions && 
                 <div>

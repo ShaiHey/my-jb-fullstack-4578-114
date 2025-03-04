@@ -9,7 +9,11 @@ class Auth {
     }
 
     async signup(signup: Signup): Promise<string> {
-        const response = await axios.post<{jwt: string}>(`${import.meta.env.VITE_REST_SERVER_URL}/auth/signup`, signup);
+        const response = await axios.post<{jwt: string}>(`${import.meta.env.VITE_REST_SERVER_URL}/auth/signup`, signup, {
+            headers: {
+                "Content-Type": "multipart/form-data"
+            }
+        });
         return response.data.jwt;
     }
 }

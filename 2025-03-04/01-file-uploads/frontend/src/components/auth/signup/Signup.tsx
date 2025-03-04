@@ -8,6 +8,7 @@ function Signup(): JSX.Element {
     const { register, handleSubmit, reset } = useForm<SignupModel>()
 
     async function submitSignup(signup: SignupModel) {
+        signup.imagePic = (signup.imagePic as unknown as FileList)[0]
         await auth.signup(signup)
             .then(() => {
                 reset()
@@ -34,6 +35,11 @@ function Signup(): JSX.Element {
                 <div className="input-group">
                     <label htmlFor="password">Password</label>
                     <input id="password" placeholder="Enter your password" type="password" {...register('password')} />
+                </div>
+                <div className="input-group">
+                    <label htmlFor="profilePic">Profile pic</label>
+                    <input id="profilePic" type="file" {...register('imagePic')} />
+                    
                 </div>
                 <button type="submit" className="signup-btn">Sign Up</button>
             </form>

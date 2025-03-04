@@ -10,7 +10,7 @@ export const signUpValidator = loginValidator.append({
 })
 
 export const signUpFilesValidator = Joi.object({
-    picUrl: Joi.object({
+    imagePic: Joi.object({
         mimetype: Joi.string().valid('image/png', 'image/jpg', 'image/jpeg')
     }).unknown(true).optional()
 })
