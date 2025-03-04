@@ -14,7 +14,6 @@ io.on('connection', socket => {
     console.log(`Got a new connection`);
 
     socket.onAny((eventName, payload) => {
-        console.log(eventName, payload)
         io.emit(eventName, payload)
     })
 
