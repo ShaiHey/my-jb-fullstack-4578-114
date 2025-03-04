@@ -8,6 +8,6 @@ import filesValidation from "../middlewares/files-validation";
 const authRouter = Router();
 
 authRouter.post('/login', validation(loginValidator), login)
-authRouter.post('/signup', validation(signUpValidator), filesValidation(signUpFilesValidator), fileUploader, signUp)
+authRouter.post('/signup', validation(signUpValidator), filesValidation(signUpFilesValidator), fileUploader('picUrl'), signUp)
 
 export default authRouter;

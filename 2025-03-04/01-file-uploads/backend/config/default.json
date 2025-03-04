@@ -21,6 +21,7 @@
     },
     "s3": {
         "bucket": "il.co.johnbryce.shaihey",
+        "isLocalStack": true,
         "connection": {
             "region": "us-east-1",
             "forcePathStyle": true,

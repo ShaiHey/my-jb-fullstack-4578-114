@@ -8,5 +8,8 @@
         "sync": {
             "force": false
         }
+    },
+    "s3": {
+        "isLocalStack": false
     }
 }

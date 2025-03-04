@@ -10,7 +10,7 @@ const profileRouter = Router();
 profileRouter.get('/', getProfile)
 profileRouter.get('/:id', getPost)
 profileRouter.delete('/:id', deletePost)
-profileRouter.post('/', validation(newPostValidator), filesValidation(newPostFilesValidator), fileUploader, createPost)
+profileRouter.post('/', validation(newPostValidator), filesValidation(newPostFilesValidator), fileUploader('postImage'), createPost)
 profileRouter.patch('/:id', validation(updatePostValidator), updatePost)
 
 export default profileRouter;
