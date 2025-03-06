@@ -1,0 +1,21 @@
+.Layout {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 6fr;
+    height: 100%;
+}
+
+.Layout > header {
+    grid-column: 1;
+    grid-row: 1;
+}
+
+.Layout > main {
+    grid-column: 1;
+    grid-row: 2;
+    overflow: auto;
+}
+
+.Layout > * {
+    border: 1px dashed lightblue;
+}

@@ -1,0 +1,13 @@
+.List > h2 {
+    display: flex;
+    justify-content: center;
+}
+
+.List > .Select {
+    text-align: center;
+}
+
+.List > .CardsContainer {
+    display: flex;
+    flex-direction: row;
+}

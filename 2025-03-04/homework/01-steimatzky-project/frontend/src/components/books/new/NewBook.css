@@ -1,0 +1,15 @@
+.NewBook {
+    border: 1px dashed lightseagreen;
+    padding: 4px;
+    margin: 4px;
+}
+
+.NewBook > form {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.NewBook .error {
+    color: red;
+}

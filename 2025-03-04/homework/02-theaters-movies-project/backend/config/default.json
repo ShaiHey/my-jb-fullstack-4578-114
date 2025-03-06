@@ -1,0 +1,22 @@
+{
+    "app": {
+        "port": 3000,
+        "name": "Cinema app",
+        "secret": "MySecret",
+        "jwtSecret": "MyJwtSecret"
+    },
+    "db": {
+        "dialect": "mysql",
+        "port": 3306,
+        "host": "localhost",
+        "username": "root",
+        "password": "",
+        "database": "cinema"
+    },
+    "sequelize": {
+        "logging": true,
+        "sync": {
+            "force": false
+        }
+    }
+}

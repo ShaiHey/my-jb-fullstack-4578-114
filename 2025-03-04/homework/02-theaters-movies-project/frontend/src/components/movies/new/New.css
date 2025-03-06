@@ -1,0 +1,15 @@
+.New {
+    border: 1px dashed lightseagreen;
+    padding: 4px;
+    margin: 4px;
+}
+
+.New > form {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.New .error {
+    color: red;
+}
