@@ -9,7 +9,7 @@ interface CommentsProps {
 }
 
 function PostComments({ comments, postId }: CommentsProps): JSX.Element {
-    
+    console.log(comments)
     return (
         <div className='PostComments'>
             <p>Total comments : { comments.length } </p>

@@ -6,6 +6,7 @@ import postIncludes from '../common/post-includes'
 import AppError from "../../errors/app-error";
 import status from "http-status";
 import socket from "../../io/io";
+import SocketMessages from "socket-enums-shaihey";
 
 export async function getProfile(req: Request, res: Response, next: NextFunction) {
     try {
@@ -74,7 +75,7 @@ export async function createPost(req: Request, res: Response, next: NextFunction
         await post.reload(postIncludes)
         res.json(post)
         
-        socket.emit('newPost', {
+        socket.emit(SocketMessages.NEW_POST, {
             from: req.headers['x-client-id'],
             data: post
         })

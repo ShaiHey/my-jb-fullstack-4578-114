@@ -2,6 +2,8 @@ import { NextFunction, Request, Response } from "express";
 import Comment from "../../models/comment";
 import User from "../../models/user";
 import RequestParams from "../../models/request-params";
+import socket from "../../io/io";
+import SocketMessages from "socket-enums-shaihey";
 
 export async function createComment(req: Request<RequestParams>, res: Response, next: NextFunction) {
     try {
@@ -19,6 +21,11 @@ export async function createComment(req: Request<RequestParams>, res: Response, 
         })
 
         res.json(newComment);
+
+        socket.emit(SocketMessages.NEW_COMMENT, {
+            from: req.headers['x-client-id'],
+            data: newComment
+        })
     } catch (error) {
         next(error)
     }

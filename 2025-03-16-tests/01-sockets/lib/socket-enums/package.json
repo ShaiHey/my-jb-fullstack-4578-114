@@ -1,0 +1,13 @@
+{
+  "name": "socket-enums-shaihey",
+  "version": "1.0.0",
+  "description": "",
+  "license": "ISC",
+  "author": "",
+  "type": "commonjs",
+  "main": "./dist/socket-enums.js",
+  "types": "./dist/socket-enums.d.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}
