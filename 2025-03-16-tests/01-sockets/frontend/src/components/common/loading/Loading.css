@@ -1,0 +1,7 @@
+.Loading {
+    text-align: center;
+}
+
+.Loading > img {
+    width: 48px;
+}

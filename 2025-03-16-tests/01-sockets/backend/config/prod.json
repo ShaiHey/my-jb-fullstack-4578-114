@@ -1,0 +1,15 @@
+{
+    "app": {
+        "port": 80,
+        "name": "Twitter Prod"
+    },
+    "sequelize": {
+        "logging": false,
+        "sync": {
+            "force": false
+        }
+    },
+    "s3": {
+        "isLocalStack": false
+    }
+}
