@@ -1,0 +1,21 @@
+{
+    "app": {
+        "port": 80,
+        "name": "Twitter Production"
+    },
+    "sequelize": {
+        "logging": false,
+        "sync": {
+            "force": false
+        }
+    },
+    "s3": {
+        "isLocalStack": false,
+        "connection": {
+            "credentials": {
+                "accessKeyId": "AKIAXLEKZJVVZRFJDEQ5",
+                "secretAccessKey": ""
+            }
+        }
+    }
+}
