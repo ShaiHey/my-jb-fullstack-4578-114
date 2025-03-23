@@ -1,0 +1,38 @@
+{
+    "app": {
+        "port": 3000,
+        "name": "Twitter Dev",
+        "secret": "MySecret",
+        "jwtSecret": "MyJwtSecret"
+    },
+    "db": {
+        "dialect": "mysql",
+        "port": 3306,
+        "host": "localhost",
+        "username": "root",
+        "password": "",
+        "database": "twitter"
+    },
+    "sequelize": {
+        "logging": true,
+        "sync": {
+            "force": false
+        }
+    },
+    "s3": {
+        "bucket": "il.co.johnbryce.shaihey",
+        "isLocalStack": true,
+        "connection": {
+            "region": "us-east-1",
+            "forcePathStyle": true,
+            "credentials": {
+                "accessKeyId": "test",
+                "secretAccessKey": "test"
+            },
+            "endpoint": "http://localhost:4566"
+        }
+    },
+    "io": {
+        "url": "ws://127.0.0.1:3003"
+    }
+}
