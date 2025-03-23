@@ -1,24 +1,4 @@
 {
-    "app": {
-        "port": 3000,
-        "name": "Twitter Dev",
-        "secret": "MySecret",
-        "jwtSecret": "MyJwtSecret"
-    },
-    "db": {
-        "dialect": "mysql",
-        "port": 3306,
-        "host": "localhost",
-        "username": "root",
-        "password": "",
-        "database": "twitter"
-    },
-    "sequelize": {
-        "logging": true,
-        "sync": {
-            "force": false
-        }
-    },
     "s3": {
         "bucket": "il.co.johnbryce.shaihey",
         "isLocalStack": true,
@@ -35,6 +15,7 @@
     "sqs": {
         "isLocalStack": true,
         "queueName": "shaihey-sn-queue",
+        "queueUrl": "http://sqs.us-east-1.localhost.localstack.cloud:4566/000000000000/shaihey-sn-queue",
         "connection": {
             "region": "us-east-1",
             "credentials": {
@@ -43,8 +24,5 @@
             },
             "endpoint": "http://localhost:4566"
         }
-    },
-    "io": {
-        "url": "ws://127.0.0.1:3003"
     }
 }

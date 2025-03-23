@@ -15,10 +15,9 @@ import authJwt from "./middlewares/auth/getUser";
 import verifyUser from "./middlewares/auth/verifyUser";
 import logRequest from "./middlewares/log-request";
 import fileUpload from "express-fileupload";
-import { createAppBucketIfNotExist } from "./aws/aws";
+import { createAppBucketIfNotExist } from "./aws/s3";
+import { createAppQueueIfNotExist } from "./aws/sqs";
 
-const port = config.get<number>('app.port');
-const name = config.get<string>('app.name');
 const force = config.get<boolean>('sequelize.sync.force');
 
 export const server = express();
@@ -27,6 +26,7 @@ export async function start() {
     await sequelize.sync({ force });
     
     await createAppBucketIfNotExist();
+    await createAppQueueIfNotExist();
 
     // Middlewares
     server.use(cors());
@@ -50,7 +50,4 @@ export async function start() {
     // Error middleware
     server.use(errorLogger);
     server.use(errorResponder);
-
-    // server.listen(port, () => console.log(`Server ${name} started on port ${port}.....`));
 }
-
