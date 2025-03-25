@@ -1,0 +1,41 @@
+{
+    "app": {
+        "port": 3000,
+        "name": "Twitter Dev",
+        "secret": "MySecret",
+        "jwtSecret": "MyJwtSecret"
+    },
+    "s3": {
+        "bucket": "il.co.johnbryce.shaihey",
+        "isLocalStack": true,
+        "connection": {
+            "region": "us-east-1",
+            "forcePathStyle": true,
+            "credentials": {
+                "accessKeyId": "test",
+                "secretAccessKey": "test"
+            },
+            "endpoint": "http://localhost:4566"
+        }
+    },
+    "sqs": {
+        "isLocalStack": true,
+        "queueName": "shaihey-sn-queue",
+        "connection": {
+            "region": "us-east-1",
+            "credentials": {
+                "accessKeyId": "test",
+                "secretAccessKey": "test"
+            },
+            "endpoint": "http://localhost:4566"
+        }
+    },
+    "io": {
+        "url": "ws://127.0.0.1:3003"
+    },
+    "mongoose": {
+        "host": "localhost",
+        "port": 27017,
+        "database": "twitter"
+    }
+}
