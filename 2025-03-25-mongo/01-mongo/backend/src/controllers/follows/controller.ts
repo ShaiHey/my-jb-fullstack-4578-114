@@ -1,23 +1,18 @@
 import { NextFunction, Request, Response } from "express";
 import RequestParams from "../../models/request-params";
-import AppError from "../../errors/app-error";
-import status from "http-status";
+import { UserModel } from "../../models/user";
 
 export async function getFollowers(req: Request, res: Response, next: NextFunction) {
     try {
-        // const userId = req.userId
+        const userId = req.userId
 
-        // const user = await User.findByPk(userId, {
-        //     include: [{
-        //         model: User,
-        //         as: 'followers'
-        //     }],
-        //     order: [
-        //         [col('followers.name'), 'ASC']
-        //     ]
-        // })
+        const followers = await UserModel.find({
+            following: {
+                $in: userId
+            }
+        })
 
-        // res.json(user.followers)
+        res.json(followers.map(doc => doc.toObject()));
     } catch (error) {
         next(error)
     }
@@ -25,15 +20,9 @@ export async function getFollowers(req: Request, res: Response, next: NextFuncti
 
 export async function getFollowing(req: Request, res: Response, next: NextFunction) {
     try {
-        // const userId = req.userId
-
-        // const user = await User.findByPk(userId, {
-        //     include: [{
-        //         model: User,
-        //         as: 'following'
-        //     }]
-        // })
-        // res.json(user.following)
+        const userId = req.userId
+        const user = await UserModel.findById(userId)
+        res.json(user.following)
     } catch (error) {
         next(error)
     }
@@ -41,17 +30,24 @@ export async function getFollowing(req: Request, res: Response, next: NextFuncti
 
 export async function follow(req: Request<RequestParams>, res: Response, next: NextFunction) {
     try {
-        // const followerId = req.userId
+        const followerId = req.userId
 
-        // const follow = await Follow.create({
-        //     followerId,
-        //     followeeId: req.params.id
-        // })
+        // fetch and update
+        // const user = await UserModel.findById(followerId);
+        // user.following.push(req.params.id)
+        // await user.save()
 
-        // res.json(follow)
-        // // const follower = await User.findByPk(req.params.id)
+        await UserModel.findOneAndUpdate({
+            _id: followerId
+        }, {
+            $push: {
+                following: req.params.id
+            }
+        }, {
+            new: true
+        })
 
-        // // res.json(follower)
+        res.json({ success: true });
     } catch (error) {
         next(error)
     }
@@ -59,21 +55,24 @@ export async function follow(req: Request<RequestParams>, res: Response, next: N
 
 export async function unfollow(req: Request<RequestParams>, res: Response, next: NextFunction) {
     try {
-        // const followerId = req.userId
-        
-        // const isUnfollowed = await Follow.destroy({
-        //     where: {
-        //         followerId,
-        //         followeeId: req.params.id
-        //     }
-        // })
+        const followerId = req.userId
 
-        // if(isUnfollowed === 0) return next(new AppError(
-        //     status.NOT_FOUND,
-        //     "Tried to delete unexciting record"
-        // ));
-        
-        // res.json({ success: true });
+        // fetch and update
+        // const user = await UserModel.findById(followerId);
+        // user.following = user.following.filter(followId => followId !== req.params.id)
+        // await user.save()
+
+        await UserModel.findOneAndUpdate({
+            _id: followerId
+        }, {
+            $pull: {
+                following: req.params.id
+            }
+        }, {
+            new: true
+        })
+
+        res.json({ success: true });
     } catch (error) {
         next(error)
     }
