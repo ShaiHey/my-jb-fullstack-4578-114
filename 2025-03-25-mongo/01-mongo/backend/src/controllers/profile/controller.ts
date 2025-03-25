@@ -10,7 +10,7 @@ export async function getProfile(req: Request, res: Response, next: NextFunction
     try {
         const userId = req.userId
 
-        const profile = await PostModel.find({ userId })
+        const profile = await PostModel.find({ userId }).populate(['user', 'comments.user']);
 
         res.json(profile.map(doc => doc.toObject()));
     } catch (error) {
@@ -49,7 +49,7 @@ export async function deletePost(req: Request<RequestParams>, res: Response, nex
 export async function createPost(req: Request, res: Response, next: NextFunction) {
     try {
         const userId = req.userId
-        let createParams = { ...req.body, userId }
+        let createParams = { ...req.body, userId, user: userId }
 
         if(req.imageUrl) {
             const imageUrl = req.imageUrl

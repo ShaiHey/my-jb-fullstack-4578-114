@@ -37,9 +37,7 @@ export async function follow(req: Request<RequestParams>, res: Response, next: N
         // user.following.push(req.params.id)
         // await user.save()
 
-        await UserModel.findOneAndUpdate({
-            _id: followerId
-        }, {
+        await UserModel.findByIdAndUpdate(followerId, {
             $push: {
                 following: req.params.id
             }
@@ -62,9 +60,7 @@ export async function unfollow(req: Request<RequestParams>, res: Response, next:
         // user.following = user.following.filter(followId => followId !== req.params.id)
         // await user.save()
 
-        await UserModel.findOneAndUpdate({
-            _id: followerId
-        }, {
+        await UserModel.findByIdAndUpdate(followerId, {
             $pull: {
                 following: req.params.id
             }

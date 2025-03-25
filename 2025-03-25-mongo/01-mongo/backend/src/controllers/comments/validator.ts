@@ -5,5 +5,5 @@ export const newCommentValidator = Joi.object({
 })
 
 export const newCommentParamsValidator = Joi.object({
-    id: Joi.string().uuid().required()
+    id: Joi.string().hex().length(24).required()
 })

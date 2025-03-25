@@ -2,23 +2,23 @@ import { NextFunction, Request, Response } from "express";
 import RequestParams from "../../models/request-params";
 import socket from "../../io/io";
 import SocketMessages from "socket-enums-shaihey";
+import { PostModel } from "../../models/post";
 
-export async function createComment(req: Request<RequestParams>, res: Response, next: NextFunction) {
+export async function createComment(req: Request<RequestParams, {}, {body: string}>, res: Response, next: NextFunction) {
     try {
-        // const userId = req.userId
-        // const postId = req.params.id
+        const userId = req.userId
+        const postId = req.params.id
         
-        // const newComment = await Comment.create({
-        //     postId,
-        //     userId,
-        //     ...req.body
-        // })
+        
+        const newComment = await PostModel.findByIdAndUpdate(postId, {
+            $push: {
+                comments: {...req.body, userId, user: userId, createdAt: new Date()}
+            }
+        }, {
+            new: true
+        })
 
-        // await newComment.reload({
-        //     include: [ User ]
-        // })
-
-        // res.json(newComment);
+        res.json(newComment.toObject());
 
         // socket.emit(SocketMessages.NEW_COMMENT, {
         //     from: req.headers['x-client-id'],
