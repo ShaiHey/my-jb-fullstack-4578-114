@@ -4,6 +4,7 @@ import config from "config";
 import { sign } from "jsonwebtoken";
 import AppError from "../../errors/app-error";
 import status from "http-status";
+import { UserModel } from "../../models/user";
 
 export function hashPassword(password: string): string {
     return createHmac('sha256', config.get<string>('app.secret'))
@@ -13,23 +14,21 @@ export function hashPassword(password: string): string {
 
 export async function login(req: Request, res: Response, next: NextFunction) {
     try {
-        // const { username, password } = req.body
+        const { username, password } = req.body
 
-        // const user = await User.findOne({
-        //     where: {
-        //         username,
-        //         password: hashPassword(password)
-        //     }
-        // })
+        const user = await UserModel.findOne({
+            username,
+            password: hashPassword(password)
+        })
 
-        // if(!user) return next(new AppError(
-        //     status.INTERNAL_SERVER_ERROR,
-        //    'Wrong credentials'
-        // ))
+        if(!user) return next(new AppError(
+            status.INTERNAL_SERVER_ERROR,
+           'Wrong credentials'
+        ))
 
-        // const jwt = sign(user.get({ plain: true }), config.get<string>('app.jwtSecret'))
+        const jwt = sign(user.toObject(), config.get<string>('app.jwtSecret'))
 
-        // res.json({ jwt })
+        res.json({ jwt })
     } catch (error) {
         next(error)
     }
@@ -38,17 +37,19 @@ export async function login(req: Request, res: Response, next: NextFunction) {
 export async function signUp(req: Request, res: Response, next: NextFunction) {
     const { name, username, password } = req.body
     try {
+        const user = new UserModel({
+            name,
+            username,
+            password: hashPassword(password),
+            createdAt: new Date(),
+            picUrl: req.imageUrl,
+            following: []
+        })
 
-        // const user = await User.create({
-        //     name,
-        //     username,
-        //     password: hashPassword(password),
-        //     picUrl: req.imageUrl
-        // })
+        user.save()
 
-        // const jwt = sign(user.get({ plain: true }), config.get<string>('app.jwtSecret'))
-
-        // res.json({ jwt })
+        const jwt = sign(user.toObject(), config.get<string>('app.jwtSecret'))
+        res.json({ jwt })
     } catch (error) {
         if(error.name === "SequelizeUniqueConstraintError") return next(new AppError(
             status.CONFLICT,

@@ -16,6 +16,7 @@ export default function authJwt(req: Request, res: Response, next: NextFunction)
     if(req.token) {
         try {
             const user = verify(req.token, config.get('app.jwtSecret')) as {id: string}
+            
             req.userId = user.id
         } catch (error) {
             next(new AppError(status.UNAUTHORIZED, 'Invalid JWT'))
