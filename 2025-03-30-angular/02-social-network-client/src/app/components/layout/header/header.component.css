@@ -1,3 +1,20 @@
-p {
-    color:  red;
+#header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#header nav {
+    display: flex;
+    flex-direction: row;
+    gap: 6px;
+}
+
+#header .active {
+    color: green;
+}
+
+#header img {
+    width: 104px;
 }
