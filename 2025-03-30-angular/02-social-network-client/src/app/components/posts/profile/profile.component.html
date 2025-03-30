@@ -1,0 +1,15 @@
+<!-- one way binding -->
+<p>{{name}}</p>
+<p>Current time: {{currentTime | date | allcaps}}</p>
+
+<!-- two way binding [()] = banana in a box-->
+<input [(ngModel)]="address" />
+{{address}}
+
+<hr>
+
+<input [(ngModel)]="username" />
+<br>
+{{username()}}
+<br>
+{{email()}}
