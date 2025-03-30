@@ -24,4 +24,10 @@ export class ProfileService {
     const profile = firstValueFrom(observable)
     return profile;
   }
+
+  async deletePost(id: string): Promise<boolean> {
+    const observable = this.httpClient.delete<boolean>(`${environment.restServerUrl}/profile/${id}`)
+    const isDeleted = firstValueFrom(observable)
+    return isDeleted;
+  }
 }

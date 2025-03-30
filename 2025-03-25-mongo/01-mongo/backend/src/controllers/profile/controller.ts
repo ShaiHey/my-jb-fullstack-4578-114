@@ -49,7 +49,7 @@ export async function deletePost(req: Request<RequestParams>, res: Response, nex
 export async function createPost(req: Request, res: Response, next: NextFunction) {
     try {
         const userId = req.userId
-        let createParams = { ...req.body, userId, user: userId }
+        let createParams = { ...req.body, userId, user: userId, createdAt: new Date() }
 
         if(req.imageUrl) {
             const imageUrl = req.imageUrl

@@ -1,1 +1,14 @@
-<p>post works!</p>
+<div id="post">
+    <div>{{post()?.title}}</div>
+    <div>
+        by {{post()?.user?.name}} on {{post()?.createdAt?.toLocaleString()}}
+    </div>
+    @if (post()?.imageUrl) {
+        <div>
+            <img [src]="imageURL" />
+        </div>
+    }
+    <div>{{post()?.body}}</div>
+
+    <button (click)="deleteMe()">Delete</button>
+</div>
