@@ -17,6 +17,8 @@ export class ProfileComponent implements OnInit, OnDestroy {
   username = signal<string>('')
   email = computed(() => `${this.username()}@johnbryce.co.il`)
 
+  isButtonDisabled = true
+
   // runs when the component initializes
   ngOnInit(): void {
     this.intervalId = setInterval(() => {
@@ -27,5 +29,9 @@ export class ProfileComponent implements OnInit, OnDestroy {
   // runs when the component is destroyed
   ngOnDestroy(): void {
     clearInterval(this.intervalId)
+  }
+
+  sayHi() {
+    alert('hi')
   }
 }
