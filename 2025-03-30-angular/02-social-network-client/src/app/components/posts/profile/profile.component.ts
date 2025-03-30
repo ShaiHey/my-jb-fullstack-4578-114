@@ -1,37 +1,21 @@
-import { DatePipe } from '@angular/common';
-import { Component, computed, OnDestroy, OnInit, signal } from '@angular/core';
-import { AllcapsPipe } from '../../../pipes/allcaps.pipe';
-import { FormsModule } from '@angular/forms';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { ProfileService } from '../../../services/profile.service';
 
 @Component({
   selector: 'app-profile',
-  imports: [DatePipe, AllcapsPipe, FormsModule],
+  imports: [],
+  // providers: [ ProfileService ], // if the components needs its own ProfileService, it states here like so...
   templateUrl: './profile.component.html',
   styleUrl: './profile.component.css'
 })
-export class ProfileComponent implements OnInit, OnDestroy {
-  name: string = 'Bob'
-  currentTime = (new Date())
-  intervalId: any
-  address: string = 'Khoma imigidal 33'
-  username = signal<string>('')
-  email = computed(() => `${this.username()}@johnbryce.co.il`)
+export class ProfileComponent implements OnInit {
 
-  isButtonDisabled = true
+  constructor(
+    public profileService: ProfileService
+  ) {}
 
-  // runs when the component initializes
-  ngOnInit(): void {
-    this.intervalId = setInterval(() => {
-      this.currentTime = (new Date())
-    }, 1000);
-  }
-
-  // runs when the component is destroyed
-  ngOnDestroy(): void {
-    clearInterval(this.intervalId)
-  }
-
-  sayHi() {
-    alert('hi')
+  async ngOnInit(): Promise<void> {
+    const profile = await this.profileService.getProfile()
+    console.log(profile)
   }
 }
