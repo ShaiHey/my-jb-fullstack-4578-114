@@ -1,0 +1,21 @@
+{
+    "app": {
+        "port": 3000,
+        "name": "Twitter Production"
+    },
+    "s3": {
+        "isLocalStack": false,
+        "connection": {
+            "credentials": {
+                "accessKeyId": "AKIAXLEKZJVVUCMK5UXH",
+                "secretAccessKey": ""
+            }
+        }
+    },
+    "io": {
+        "url": "ws://io:3003"
+    },
+    "mongoose": {
+        "host": "database"
+    }
+}

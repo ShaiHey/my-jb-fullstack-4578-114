@@ -1,0 +1,12 @@
+<div id="postComments">
+    <p>Total comments : {{ comments()?.length }} </p>
+    <app-new-comment [postId]="postId()" (newComment)="updateComment($event)"></app-new-comment>
+    @for (comment of comments(); track comment.id) {
+        <app-comment
+            [postId]="postId()"
+            [comment]="comment"
+            (deletedComment)="removeComment($event)"
+        >
+        </app-comment>
+    }
+</div>

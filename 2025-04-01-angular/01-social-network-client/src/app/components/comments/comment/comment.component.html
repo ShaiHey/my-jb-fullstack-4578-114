@@ -1,0 +1,7 @@
+<div id="comment">
+    <div>{{comment()?.body}}</div>
+    <div>
+        by {{comment()?.user?.name}} on {{(comment()?.createdAt)?.toLocaleString()}}
+    </div>
+    <button (click)="deleteComment()">Delete</button>
+</div>

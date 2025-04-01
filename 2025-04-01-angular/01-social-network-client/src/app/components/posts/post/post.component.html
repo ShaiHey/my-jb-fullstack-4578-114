@@ -1,0 +1,23 @@
+<div id="post">
+    <div>{{post()?.title}}</div>
+    <div>
+        by {{post()?.user?.name}} on {{(post()?.createdAt)?.toLocaleString()}}
+    </div>
+    @if (post()?.imageUrl) {
+        <div>
+            <img src="{{ awsUrl + post()?.imageUrl }}" />
+        </div>
+    }
+    <div>{{post()?.body}}</div>
+
+    <button (click)="deleteMe()">Delete</button>
+    <button (click)="editMe()">Edit</button>
+
+    <app-post-comments
+        [postId]="post()?.id"
+        [comments]="post()?.comments"
+        (commentsChange)="commentsChange($event)"
+        (commentsDeleted)="deleteComment($event)"
+    >
+    </app-post-comments>
+</div>

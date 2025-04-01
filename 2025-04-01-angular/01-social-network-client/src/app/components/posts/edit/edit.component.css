@@ -1,0 +1,14 @@
+#editPost {
+    border: 1px dashed lightseagreen;
+    padding: 4px;
+    margin: 4px;
+}
+
+#editPost > form {
+    display: flex;
+    flex-direction: column;
+}
+
+#editPost .error {
+    color: red;
+}

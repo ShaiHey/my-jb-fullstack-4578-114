@@ -1,0 +1,14 @@
+#newPost {
+    border: 1px dashed lightseagreen;
+    padding: 4px;
+    margin: 4px;
+}
+
+#newPost > form {
+    display: flex;
+    flex-direction: column;
+}
+
+#newPost .error {
+    color: red;
+}
