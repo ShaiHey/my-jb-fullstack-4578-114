@@ -1,0 +1,44 @@
+<div id="newFurniture">
+    <form [formGroup]="newForm" (ngSubmit)="addFurniture()">
+        <input formControlName="type" placeholder="Please enter type">
+        <div [hidden]="newForm.controls.type.valid || !newForm.controls.type.dirty">
+            @if (newForm.controls.type.errors?.['required']) {
+                <span class="error">Type is required</span>
+            }
+            @else if (newForm.controls.type.errors?.['minlength']) {
+                <span class="error">Type must be at least 5 characters long</span>
+            }
+        </div>
+
+        <input formControlName="size" placeholder="Please enter size">
+        <div [hidden]="newForm.controls.size.valid || !newForm.controls.size.dirty">
+            @if (newForm.controls.size.errors?.['required']) {
+                <span class="error">Size is required</span>
+            }
+            @else if (newForm.controls.size.errors?.['minlength']) {
+                <span class="error">Size must be at least 10 characters long</span>
+            }
+        </div>
+
+        <input formControlName="color" placeholder="Please enter color">
+        <div [hidden]="newForm.controls.color.valid || !newForm.controls.color.dirty">
+            @if (newForm.controls.color.errors?.['required']) {
+                <span class="error">Color is required</span>
+            }
+            @else if (newForm.controls.color.errors?.['minlength']) {
+                <span class="error">Color must be at least 3 characters long</span>
+            }
+        </div>
+
+        <input formControlName="price" placeholder="Please enter price" type="number">
+        <div [hidden]="newForm.controls.price.valid || !newForm.controls.price.dirty">
+            @if (newForm.controls.price.errors?.['required']) {
+                <span class="error">Price is required</span>
+            }
+            @else if (newForm.controls.price.errors?.['min']) {
+                <span class="error">Price must be positive</span>
+            }
+        </div>
+        <button>Add Furniture</button>
+    </form>
+</div>
