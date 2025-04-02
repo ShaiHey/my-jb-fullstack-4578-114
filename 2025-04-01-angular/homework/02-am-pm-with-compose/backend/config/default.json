@@ -1,0 +1,13 @@
+{
+    "app": {
+        "port": 3000,
+        "name": "AM:PM Dev",
+        "secret": "MySecret",
+        "jwtSecret": "MyJwtSecret"
+    },
+    "mongoose": {
+        "host": "localhost",
+        "port": 27017,
+        "database": "ampm"
+    }
+}

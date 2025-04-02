@@ -1,0 +1,49 @@
+<div id="newBook">
+    <form [formGroup]="newForm" (ngSubmit)="addProduct()">
+        <input formControlName="name" placeholder="Please enter name">
+        <div [hidden]="newForm.controls.name.valid || !newForm.controls.name.dirty">
+            @if (newForm.controls.name.errors?.['required']) {
+                <span class="error">name is required</span>
+            }
+            @else if (newForm.controls.name.errors?.['minlength']) {
+                <span class="error">name must be at least 3 characters long</span>
+            }
+        </div>
+
+        <input formControlName="category" placeholder="Please enter category">
+        <div [hidden]="newForm.controls.category.valid || !newForm.controls.category.dirty">
+            @if (newForm.controls.category.errors?.['required']) {
+                <span class="error">category is required</span>
+            }
+            @else if (newForm.controls.category.errors?.['minlength']) {
+                <span class="error">category must be at least 5 characters long</span>
+            }
+        </div>
+
+        <input formControlName="prodDate" placeholder="Please enter production date" type="datetime-local">
+        <div [hidden]="newForm.controls.prodDate.valid || !newForm.controls.prodDate.dirty">
+            @if (newForm.controls.prodDate.errors?.['required']) {
+                <span class="error">production date is required</span>
+            }
+        </div>
+
+        <input formControlName="expireDate" placeholder="Please enter expiration date" type="datetime-local">
+        <div [hidden]="newForm.controls.expireDate.valid || !newForm.controls.expireDate.dirty">
+            @if (newForm.controls.expireDate.errors?.['required']) {
+                <span class="error">expiration date is required</span>
+            }
+        </div>
+
+        <input formControlName="price" placeholder="Please enter price" type="number">
+        <div [hidden]="newForm.controls.price.valid || !newForm.controls.price.dirty">
+            @if (newForm.controls.price.errors?.['required']) {
+                <span class="error">Price is required</span>
+            }
+            @else if (newForm.controls.price.errors?.['min']) {
+                <span class="error">Price must be positive</span>
+            }
+        </div>
+
+        <button>Add product</button>
+    </form>
+</div>

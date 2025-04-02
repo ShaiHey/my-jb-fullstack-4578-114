@@ -1,0 +1,14 @@
+#newBook {
+    border: 1px dashed lightseagreen;
+    padding: 4px;
+    margin: 4px;
+}
+
+#newBook > form {
+    display: flex;
+    flex-direction: column;
+}
+
+#newBook .error {
+    color: red;
+}
