@@ -1,0 +1,15 @@
+<div class="book-card">
+  <div class="book-details">
+    <h2 class="book-title">{{ product()?.name }}</h2>
+    <span class="book-genre">{{ product()?.category }}</span>
+    <div class="book-price-container">
+      <span class="book-price">{{ (product()?.prodDate) }} </span>
+      <span class="book-price">{{ product()?.expireDate }} </span>
+    </div>
+    <p class="book-summary">{{ product()?.price }}$</p>
+
+    <button class="add-to-cart-btn" (click)="deleteMe()">
+      Delete
+    </button>
+  </div>
+</div>

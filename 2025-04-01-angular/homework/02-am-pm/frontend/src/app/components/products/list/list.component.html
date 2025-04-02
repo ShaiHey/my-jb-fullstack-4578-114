@@ -1,0 +1,8 @@
+<div id="list">
+    @for (product of list(); track product.id) {
+        <app-card [product]="product" (productDeleted)="removeProduct($event)"></app-card>
+    }
+    @empty {
+        <p>Loading....</p>
+    }
+</div>

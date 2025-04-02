@@ -1,0 +1,54 @@
+<div id="newBook">
+    <form [formGroup]="newForm" (ngSubmit)="addBook()">
+        <input formControlName="gerne" placeholder="Please enter gerne">
+        <div [hidden]="newForm.controls.gerne.valid || !newForm.controls.gerne.dirty">
+            @if (newForm.controls.gerne.errors?.['required']) {
+                <span class="error">Gerne is required</span>
+            }
+            @else if (newForm.controls.gerne.errors?.['minlength']) {
+                <span class="error">Gerne must be at least 3 characters long</span>
+            }
+        </div>
+
+        <input formControlName="name" placeholder="Please enter name">
+        <div [hidden]="newForm.controls.name.valid || !newForm.controls.name.dirty">
+            @if (newForm.controls.name.errors?.['required']) {
+                <span class="error">Name is required</span>
+            }
+            @else if (newForm.controls.name.errors?.['minlength']) {
+                <span class="error">Name must be at least 5 characters long</span>
+            }
+        </div>
+
+        <textarea formControlName="summary" placeholder="Please enter summary"></textarea>
+        <div [hidden]="newForm.controls.summary.valid || !newForm.controls.summary.dirty">
+            @if (newForm.controls.summary.errors?.['required']) {
+                <span class="error">Summary is required</span>
+            }
+            @else if (newForm.controls.summary.errors?.['minlength']) {
+                <span class="error">Summary must be at least 10 characters long</span>
+            }
+        </div>
+
+        <input formControlName="price" placeholder="Please enter price" type="number">
+        <div [hidden]="newForm.controls.price.valid || !newForm.controls.price.dirty">
+            @if (newForm.controls.price.errors?.['required']) {
+                <span class="error">Price is required</span>
+            }
+            @else if (newForm.controls.price.errors?.['min']) {
+                <span class="error">Price must be positive</span>
+            }
+        </div>
+
+        <input formControlName="stock" placeholder="Please enter stock" type="number">
+        <div [hidden]="newForm.controls.stock.valid || !newForm.controls.stock.dirty">
+            @if (newForm.controls.stock.errors?.['required']) {
+                <span class="error">Stock is required</span>
+            }
+            @else if (newForm.controls.stock.errors?.['min']) {
+                <span class="error">Stock must be positive</span>
+            }
+        </div>
+        <button>Add Book</button>
+    </form>
+</div>

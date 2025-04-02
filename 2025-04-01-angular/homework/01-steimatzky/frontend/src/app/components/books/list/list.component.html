@@ -1,0 +1,8 @@
+<div id="list">
+    @for (book of list(); track book.id) {
+        <app-card [book]="book" (bookDeleted)="removeBook($event)"></app-card>
+    }
+    @empty {
+        <p>Loading....</p>
+    }
+</div>

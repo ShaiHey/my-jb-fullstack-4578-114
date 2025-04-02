@@ -1,0 +1,26 @@
+#grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 6fr 1fr;
+    height: 100%;
+}
+
+#grid > * {
+    border: 1px dashed lightcoral;
+}
+
+#grid > header {
+    grid-column: 1;
+    grid-row: 1;
+}
+
+#grid > main {
+    grid-column: 1;
+    grid-row: 2;
+    overflow: auto;
+}
+
+#grid > footer {
+    grid-column: 1;
+    grid-row: 3;
+}
