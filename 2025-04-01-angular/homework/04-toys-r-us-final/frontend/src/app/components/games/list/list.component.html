@@ -1,0 +1,30 @@
+<div id="list-container">
+  <div class="filter-container">
+    <label for="target-select">Filter par target: </label>
+    <select 
+      id="target-select" 
+      [value]="selectedTarget()"
+      (change)="updateSelectedTarget($event)">
+      <option value="" selected disabled>Please select a target</option>
+      @for (target of targets(); track target) {
+        <option [value]="target.id">
+          {{ target.target }}
+        </option>
+      }
+    </select>
+  </div>
+
+  <div id="list">
+    @if (filteredGames().length > 0) {
+      <div class="games-grid">
+        @for (game of filteredGames(); track game.id) {
+          <app-card [game]="game" (gameDeleted)="removeGame($event)"></app-card>
+        }
+      </div>
+    } @else if (list().length > 0) {
+      <p class="no-games">No games found for this target.</p>
+    } @else {
+      <p class="loading">Loading....</p>
+    }
+  </div>
+</div>

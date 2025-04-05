@@ -1,0 +1,11 @@
+<div id="gameCard">
+  <div>
+    <h2>{{ game()?.name }}</h2>
+    <span>{{ game()?.target?.target }}</span>
+    <p>{{ game()?.price }}$</p>
+    <small>{{game()?.description}}</small>
+    <button (click)="deleteMe()">
+      Delete
+    </button>
+  </div>
+</div>

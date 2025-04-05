@@ -1,0 +1,42 @@
+#list {
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.category-section {
+  margin-bottom: 30px;
+}
+
+.category-title {
+  color: #2c3e50;
+  font-size: 24px;
+  margin-bottom: 16px;
+  padding-bottom: 8px;
+  border-bottom: 2px solid #3498db;
+}
+
+.games-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+#list > p {
+  text-align: center;
+  font-size: 18px;
+  color: #7f8c8d;
+  padding: 40px 0;
+}
+
+@media (max-width: 768px) {
+  .games-grid {
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  }
+}
+
+@media (max-width: 480px) {
+  .games-grid {
+    grid-template-columns: 1fr;
+  }
+}

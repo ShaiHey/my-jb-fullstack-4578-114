@@ -1,0 +1,29 @@
+version: '3.8'
+
+services:
+  database:
+    container_name: toysrus-database
+    ports:
+      - 27017:27017
+    build: ./database
+    healthcheck:
+      test: ["CMD-SHELL","mongosh", "db.runCommand('ping').ok"]
+      interval: 10s
+      timeout: 10s
+      retries: 5
+      start_period: 40s
+  backend:
+    container_name: toysrus-backend
+    ports:
+      - 3000:3000
+    environment:
+      - NODE_ENV=compose
+    build: ./backend
+    depends_on:
+      database:
+        condition: service_healthy
+  frontend:
+    container_name: toysrus-frontend
+    ports:
+      - 4200:80
+    build: ./frontend

@@ -1,0 +1,51 @@
+<div id="newBook">
+    <form [formGroup]="newForm" (ngSubmit)="addGame()">
+        <select
+            formControlName="targetId"
+        >
+            <option [value]="" selected disabled>Please select a target</option>
+            @for (target of targets(); track target) {
+                <option [value]="target.id">
+                    {{ target.target }}
+                </option>
+            }
+        </select>
+        <div [hidden]="newForm.controls.targetId.valid || !newForm.dirty">
+            @if (newForm.controls.targetId.errors?.['required']) {
+                <span class="error">Target is required</span>
+            }
+        </div>
+
+        <input formControlName="name" placeholder="Please enter name">
+        <div [hidden]="newForm.controls.name.valid || !newForm.controls.name.dirty">
+            @if (newForm.controls.name.errors?.['required']) {
+                <span class="error">Name is required</span>
+            }
+            @else if (newForm.controls.name.errors?.['minlength']) {
+                <span class="error">Name must be at least 5 characters long</span>
+            }
+        </div>
+
+        <textarea formControlName="description" placeholder="Please enter description"></textarea>
+        <div [hidden]="newForm.controls.description.valid || !newForm.controls.description.dirty">
+            @if (newForm.controls.description.errors?.['required']) {
+                <span class="error">Description is required</span>
+            }
+            @else if (newForm.controls.description.errors?.['minlength']) {
+                <span class="error">Description must be at least 5 characters long</span>
+            }
+        </div>
+
+        <input formControlName="price" placeholder="Please enter price" type="number">
+        <div [hidden]="newForm.controls.price.valid || !newForm.controls.price.dirty">
+            @if (newForm.controls.price.errors?.['required']) {
+                <span class="error">Price is required</span>
+            }
+            @else if (newForm.controls.price.errors?.['min']) {
+                <span class="error">Price must be positive</span>
+            }
+        </div>
+
+        <button>Add Game</button>
+    </form>
+</div>

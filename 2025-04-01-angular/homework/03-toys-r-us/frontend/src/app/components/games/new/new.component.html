@@ -1,0 +1,45 @@
+<div id="newBook">
+    <form [formGroup]="newForm" (ngSubmit)="addGame()">
+        <input formControlName="target" placeholder="Please enter target">
+        <div [hidden]="newForm.controls.target.valid || !newForm.controls.target.dirty">
+            @if (newForm.controls.target.errors?.['required']) {
+                <span class="error">Target is required</span>
+            }
+            @else if (newForm.controls.target.errors?.['minlength']) {
+                <span class="error">Target must be at least 3 characters long</span>
+            }
+        </div>
+
+        <input formControlName="name" placeholder="Please enter name">
+        <div [hidden]="newForm.controls.name.valid || !newForm.controls.name.dirty">
+            @if (newForm.controls.name.errors?.['required']) {
+                <span class="error">Name is required</span>
+            }
+            @else if (newForm.controls.name.errors?.['minlength']) {
+                <span class="error">Name must be at least 5 characters long</span>
+            }
+        </div>
+
+        <textarea formControlName="description" placeholder="Please enter description"></textarea>
+        <div [hidden]="newForm.controls.description.valid || !newForm.controls.description.dirty">
+            @if (newForm.controls.description.errors?.['required']) {
+                <span class="error">Description is required</span>
+            }
+            @else if (newForm.controls.description.errors?.['minlength']) {
+                <span class="error">Description must be at least 5 characters long</span>
+            }
+        </div>
+
+        <input formControlName="price" placeholder="Please enter price" type="number">
+        <div [hidden]="newForm.controls.price.valid || !newForm.controls.price.dirty">
+            @if (newForm.controls.price.errors?.['required']) {
+                <span class="error">Price is required</span>
+            }
+            @else if (newForm.controls.price.errors?.['min']) {
+                <span class="error">Price must be positive</span>
+            }
+        </div>
+
+        <button>Add Game</button>
+    </form>
+</div>
