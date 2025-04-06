@@ -1,14 +1,14 @@
 {
     "app": {
         "port": 3000,
-        "name": "Ikea Dev",
+        "name": "Translate Dev",
         "secret": "MySecret",
         "jwtSecret": "MyJwtSecret"
     },
     "mongoose": {
         "host": "localhost",
         "port": 27017,
-        "database": "ikea"
+        "database": "transearly"
     },
     "dropbox": {
         "clientID": "653fhrljs91ufzz",
