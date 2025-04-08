@@ -2,6 +2,9 @@ import { DeleteMessageCommand, ReceiveMessageCommand, SendMessageCommand, SQSCli
 import axios from "axios";
 import config from "config";
 import OpenAI from "openai";
+import { UserModel } from "./models/user";
+import { Dropbox } from "dropbox";
+import { connectToMongo } from "./db/mongoose";
 
 const sqsConfig = JSON.parse(JSON.stringify(config.get('sqs.connection')));
 if (!config.get<boolean>('sqs.isLocalStack')) delete sqsConfig.endpoint;
@@ -13,6 +16,7 @@ const chatgpt = new OpenAI({
 });
 
 async function work() {
+    await connectToMongo()
     while (true) {
         try {
             const { Messages } = await sqsClient.send(
@@ -37,6 +41,13 @@ async function work() {
                 })
 
                 console.log(response)
+
+                const user = await UserModel.findById(payload.userId);
+                const dbx = new Dropbox({ accessToken: user?.dropbox.accessToken })
+                dbx.filesUpload({
+                    contents: response.output_text,
+                    path: `/test.${payload.language}.txt`
+                })
     
                 await sqsClient.send(new DeleteMessageCommand({
                     QueueUrl: config.get<string>('sqs.translateQueueUrl'),

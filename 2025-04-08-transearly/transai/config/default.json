@@ -13,5 +13,16 @@
     },
     "openAi": {
         "secretKey": ""
+    },
+    "dropbox": {
+        "clientID": "653fhrljs91ufzz",
+        "clientSecret": "w5m6352e41d48ow",
+        "callbackURL": "http://localhost:3000/dropbox/callback",
+        "apiVersion": "2"
+    },
+    "mongoose": {
+        "host": "localhost",
+        "port": 27017,
+        "database": "transearly"
     }
 }
