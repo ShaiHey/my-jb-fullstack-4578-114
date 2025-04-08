@@ -27,16 +27,18 @@ async function work() {
     
                 const resultPromise = await convertApi.convert('txt', { File: payload.link }, 'docx')
                 console.log(resultPromise.response)
-
-                const newMessage = await sqsClient.send(new SendMessageCommand({
+                
+                const results = await Promise.all(config.get<string[]>('languages').map(language => sqsClient.send(new SendMessageCommand({
                     QueueUrl: config.get('sqs.translateQueueUrl'),
                     MessageBody: JSON.stringify({
                         userId: payload.userId,
-                        link: resultPromise.file.url
+                        link: resultPromise.file.url,
+                        language
                     })
-                }))
+                }))))
 
-                console.log(`Sent message to translate...`)
+                console.log(`Sent ${results.length} messages to translate...`)
+                console.log(results)
     
                 await sqsClient.send(new DeleteMessageCommand({
                     QueueUrl: config.get<string>('sqs.docxToTxtQueueUrl'),

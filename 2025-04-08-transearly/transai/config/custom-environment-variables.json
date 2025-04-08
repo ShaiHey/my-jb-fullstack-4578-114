@@ -1,0 +1,5 @@
+{
+    "openAi": {
+        "secretKey": "OPENAI_SECRET"
+    }
+}

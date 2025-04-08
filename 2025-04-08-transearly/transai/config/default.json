@@ -1,8 +1,6 @@
 {
     "sqs": {
         "isLocalStack": true,
-        "queueName": "shaihey-sn-queue",
-        "docxToTxtQueueUrl": "http://sqs.us-east-1.localhost.localstack.cloud:4566/000000000000/shaihey-docx-to-text",
         "translateQueueUrl": "http://sqs.us-east-1.localhost.localstack.cloud:4566/000000000000/shaihey-translate",
         "connection": {
             "region": "us-east-1",
@@ -13,14 +11,7 @@
             "endpoint": "http://localhost:4566"
         }
     },
-    "convertApi": {
-        "secret": "secret_E0yGwxN3lscKmgRn"
-    },
-    "languages": [
-        "french",
-        "uzbek",
-        "malayalam",
-        "italian",
-        "hebrew"
-    ]
+    "openAi": {
+        "secretKey": ""
+    }
 }
