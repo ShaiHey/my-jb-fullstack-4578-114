@@ -27,7 +27,7 @@ const CheckoutForm = () => {
             method: 'POST',
         });
 
-        const {client_secret: clientSecret} = await res.json();
+        const { clientSecret } = await res.json();
 
         await stripe!.confirmPayment({
             elements,
