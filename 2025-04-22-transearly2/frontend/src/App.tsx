@@ -4,6 +4,7 @@ import { ChangeEvent, useEffect, useState } from 'react';
 import { loadStripe } from '@stripe/stripe-js';
 import { Elements, PaymentElement, useElements, useStripe } from '@stripe/react-stripe-js';
 import axios from 'axios';
+import { jwtDecode } from 'jwt-decode';
 
 const CheckoutForm = () => {
     const stripe = useStripe();
@@ -32,7 +33,7 @@ const CheckoutForm = () => {
             elements,
             clientSecret: paymentIntent.client_secret,
             confirmParams: {
-                return_url: 'http://localhost:5173/payment-complete=true',
+                return_url: 'http://localhost:5173/payment-complete',
             },
         });
 
@@ -54,27 +55,59 @@ const CheckoutForm = () => {
 const stripePromise = loadStripe('pk_test_51RGbtWGDbCikUzWZsOROiK1gHfeuupqm91zhjSj0vuaIp5ruxqa0HhrctzxHORfDmQWag3svB4ReFfECs2O88yCy00EfY9i1ca');
 
 function App() {
-    const [searchParams] = useSearchParams(); 
-    const [jwt, setJwt] = useState<string>('')
+    const [searchParams] = useSearchParams();
+    const [jwt, setJwt] = useState<string>('');
+    const [ isPaying, setIsPaying ] = useState<boolean>(false)
 
     useEffect(() => {
-        if(searchParams.get('jwt')) {
-            setJwt(searchParams.get('jwt')!)
+        const jwtFromUrl = searchParams.get('jwt')
+        const jwtFromStorage = localStorage.getItem('jwt')
+    
+        const finalJwt = jwtFromUrl || jwtFromStorage
+    
+        if (finalJwt) {
+            localStorage.setItem('jwt', finalJwt)
+            setJwt(finalJwt)
+    
+            const paymentIntent = searchParams.get('payment_intent')
+            if (paymentIntent) {
+                // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                const user = jwtDecode(finalJwt) as any
+                axios.post(`http://localhost:3000/stripe/update-user-payment-intent/${user.id}/${paymentIntent}`)
+                    .then(() => setIsPaying(true))
+                    .catch(err => console.error(err))
+            }
         }
-    }, [searchParams])
+    }, [searchParams])    
+
+    useEffect(() => {
+        setJwt(localStorage.getItem('jwt') || '')
+        if(localStorage.getItem('jwt')) {
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
+            const user = jwtDecode(localStorage.getItem('jwt')!) as any
+            if(user.paymentIntent) {
+                setIsPaying(true)
+            }
+        }
+    }, [])
 
   return (
     <>
-        {!jwt && <p>
+        {!jwt && <>
             <a href="http://localhost:3000/dropbox/auth">Login</a>
-            </p>}
+        </>}
         
 
-        {jwt && <p>
+        {jwt && !isPaying && <>
             <Elements stripe={stripePromise} options={{mode: 'payment', amount: 10000, currency: 'usd'}}>
                 <CheckoutForm />
             </Elements>
-        </p>}
+        </>}
+
+        {jwt && isPaying && <>
+            <p>u cas use the app now...</p>
+        </>}
+
     </>
   )
 }

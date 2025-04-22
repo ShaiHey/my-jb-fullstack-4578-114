@@ -10,6 +10,7 @@ export interface User {
         cursor: string
     },
     createdAt: Date;
+    paymentIntent: string | null
 }
 
 const UserSchema = new mongoose.Schema<User>({
@@ -20,7 +21,8 @@ const UserSchema = new mongoose.Schema<User>({
         accessToken: String,
         cursor: String
     },
-    createdAt: Date
+    createdAt: Date,
+    paymentIntent: String
 }, {
     toObject: {
         transform(doc, ret, options) {

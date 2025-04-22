@@ -15,7 +15,7 @@ export async function webhook(req: Request, res: Response, next: NextFunction) {
             'dropbox.id': req.body.list_folder?.accounts[0]
         })
 
-        if(user) {
+        if(user && user.paymentIntent) {
             const dbx = new Dropbox({accessToken: user.dropbox.accessToken})
             const delta = await dbx.filesListFolderContinue({ cursor: user.dropbox.cursor })
             const promises = delta.result.entries
@@ -32,6 +32,8 @@ export async function webhook(req: Request, res: Response, next: NextFunction) {
             }))))
 
             console.log(queueResults)
+        } else {
+            console.log("you are not paying")
         }
 
         res.status(200).send()
