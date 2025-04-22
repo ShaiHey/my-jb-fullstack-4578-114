@@ -1,0 +1,36 @@
+{
+    "app": {
+        "port": 3000,
+        "name": "Translate Dev",
+        "secret": "MySecret",
+        "jwtSecret": "MyJwtSecret",
+        "docxToTextQueueUrl": "http://sqs.us-east-1.localhost.localstack.cloud:4566/000000000000/shaihey-docx-to-text"
+    },
+    "mongoose": {
+        "host": "localhost",
+        "port": 27017,
+        "database": "transearly"
+    },
+    "dropbox": {
+        "clientID": "653fhrljs91ufzz",
+        "clientSecret": "w5m6352e41d48ow",
+        "callbackURL": "http://localhost:3000/dropbox/callback",
+        "apiVersion": "2"
+    },
+    "sqs": {
+        "isLocalStack": true,
+        "queueDocxToTextName": "shaihey-docx-to-text",
+        "queueTranslate": "shaihey-translate",
+        "connection": {
+            "region": "us-east-1",
+            "credentials": {
+                "accessKeyId": "test",
+                "secretAccessKey": "test"
+            },
+            "endpoint": "http://localhost:4566"
+        }
+    },
+    "stripe": {
+        
+    }
+}

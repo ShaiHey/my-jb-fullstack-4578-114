@@ -35,7 +35,7 @@ async function work() {
 
                 const response = await ai.models.generateContent({
                     model: 'gemini-2.0-flash',
-                    contents: `Please translate the following to ${payload.language}: ${axiosResponse.data}`,
+                    contents: `Answer with only the result. No explanations, no introductions, Please translate the following to ${payload.language}: ${axiosResponse.data}`,
                 })
 
                 console.log(response)

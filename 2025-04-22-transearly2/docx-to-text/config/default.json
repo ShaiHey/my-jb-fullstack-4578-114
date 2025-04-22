@@ -1,6 +1,8 @@
 {
     "sqs": {
         "isLocalStack": true,
+        "queueName": "shaihey-sn-queue",
+        "docxToTxtQueueUrl": "http://sqs.us-east-1.localhost.localstack.cloud:4566/000000000000/shaihey-docx-to-text",
         "translateQueueUrl": "http://sqs.us-east-1.localhost.localstack.cloud:4566/000000000000/shaihey-translate",
         "connection": {
             "region": "us-east-1",
@@ -11,18 +13,14 @@
             "endpoint": "http://localhost:4566"
         }
     },
-    "googleAi": {
-        "secretKey": ""
+    "convertApi": {
+        "secret": "secret_E0yGwxN3lscKmgRn"
     },
-    "dropbox": {
-        "clientID": "653fhrljs91ufzz",
-        "clientSecret": "w5m6352e41d48ow",
-        "callbackURL": "http://localhost:3000/dropbox/callback",
-        "apiVersion": "2"
-    },
-    "mongoose": {
-        "host": "localhost",
-        "port": 27017,
-        "database": "transearly"
-    }
+    "languages": [
+        "french",
+        "uzbek",
+        "malayalam",
+        "italian",
+        "hebrew"
+    ]
 }

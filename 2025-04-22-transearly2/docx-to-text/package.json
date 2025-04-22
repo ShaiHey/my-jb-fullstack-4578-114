@@ -23,11 +23,7 @@
     "@aws-sdk/client-s3": "^3.772.0",
     "@aws-sdk/client-sqs": "^3.772.0",
     "@aws-sdk/lib-storage": "^3.772.0",
-    "@google/genai": "^0.8.0",
-    "axios": "^1.8.4",
     "config": "^3.3.12",
-    "convertapi": "^1.15.0",
-    "dropbox": "^10.34.0",
-    "mongoose": "^8.13.2"
+    "convertapi": "^1.15.0"
   }
 }
