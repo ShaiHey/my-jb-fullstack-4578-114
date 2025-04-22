@@ -3,6 +3,7 @@ import './App.css'
 import { ChangeEvent, useEffect, useState } from 'react';
 import { loadStripe } from '@stripe/stripe-js';
 import { Elements, PaymentElement, useElements, useStripe } from '@stripe/react-stripe-js';
+import axios from 'axios';
 
 const CheckoutForm = () => {
     const stripe = useStripe();
@@ -23,19 +24,19 @@ const CheckoutForm = () => {
             return;
         }
 
-        const res = await fetch('/create-intent', {
-            method: 'POST',
-        });
+        const res = await axios.post('http://localhost:3000/stripe/payment-intent');
 
-        const { clientSecret } = await res.json();
+        const { paymentIntent } = await res.data;
 
-        await stripe!.confirmPayment({
+        const { error } = await stripe!.confirmPayment({
             elements,
-            clientSecret,
+            clientSecret: paymentIntent.client_secret,
             confirmParams: {
-                return_url: 'https://example.com/order/123/complete',
+                return_url: 'http://localhost:5173/payment-complete=true',
             },
         });
+
+        if(error) setErrorMessage(error.message!)
     };
 
   return (
@@ -70,7 +71,7 @@ function App() {
         
 
         {jwt && <p>
-            <Elements stripe={stripePromise} options={{mode: 'payment', amount: 100, currency: 'usd'}}>
+            <Elements stripe={stripePromise} options={{mode: 'payment', amount: 10000, currency: 'usd'}}>
                 <CheckoutForm />
             </Elements>
         </p>}

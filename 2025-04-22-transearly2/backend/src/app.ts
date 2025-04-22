@@ -8,6 +8,7 @@ import notFound from "./middlewares/not-found";
 import dropboxRouter from "./routers/dropbox";
 import dropboxAuth from "./auth/dropbox";
 import { createAppQueuesIfNotExist } from "./aws/sqs";
+import stripeRouter from "./routers/stripe";
 
 export const server = express();
 
@@ -24,6 +25,7 @@ export async function start() {
 
     // Router
     server.use('/dropbox', dropboxAuth.initialize(), dropboxRouter);
+    server.use('/stripe', stripeRouter)
 
     // Special notFound middleware
     server.use(notFound);
