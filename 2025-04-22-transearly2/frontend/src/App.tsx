@@ -82,12 +82,18 @@ function App() {
 
     useEffect(() => {
         setJwt(localStorage.getItem('jwt') || '')
-        if(localStorage.getItem('jwt')) {
+
+        const jwtFromUrl = searchParams.get('jwt')
+        const jwtFromStorage = localStorage.getItem('jwt')
+    
+        const finalJwt = jwtFromUrl || jwtFromStorage
+
+        if(finalJwt) {
             // eslint-disable-next-line @typescript-eslint/no-explicit-any
-            const user = jwtDecode(localStorage.getItem('jwt')!) as any
-            if(user.paymentIntent) {
-                setIsPaying(true)
-            }
+            const user = jwtDecode(finalJwt) as any
+            axios.get(`http://localhost:3000/stripe/check/${user.id}`)
+                .then((res) => setIsPaying(res.data))
+                .catch(err => console.error(err))
         }
     }, [])
 

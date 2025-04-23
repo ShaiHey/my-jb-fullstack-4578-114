@@ -33,7 +33,8 @@ async function work() {
                     MessageBody: JSON.stringify({
                         userId: payload.userId,
                         link: resultPromise.file.url,
-                        language
+                        language,
+                        name: resultPromise.file.fileName.substring(0, resultPromise.file.fileName.lastIndexOf("."))
                     })
                 }))))
 

@@ -29,6 +29,8 @@ async function work() {
                 
                 const payload = JSON.parse(Body!)
 
+                console.log('payload: ', payload)
+
                 // get the text to translate
                 const axiosResponse = await axios(payload.link);
                 console.log(`Translation is ${axiosResponse.data}`)
@@ -44,7 +46,8 @@ async function work() {
                 const dbx = new Dropbox({ accessToken: user?.dropbox.accessToken })
                 dbx.filesUpload({
                     contents: response.text,
-                    path: `/test.${payload.language}.txt`
+                    path: `/${payload.name}.${payload.language}.txt`,
+                    mode: { '.tag': 'overwrite' },
                 })
     
                 await sqsClient.send(new DeleteMessageCommand({

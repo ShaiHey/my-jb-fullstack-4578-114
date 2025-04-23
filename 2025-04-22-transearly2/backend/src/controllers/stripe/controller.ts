@@ -37,3 +37,15 @@ export async function updateUserPaymentIntent(req: Request, res: Response, next:
         next(error)
     }
 }
+
+
+export async function checkIfUserPay(req: Request<{userId: string}>, res: Response, next: NextFunction) {
+    try {
+        const { userId } = req.params;
+        const user = await UserModel.findById(userId);
+
+        res.json(!!user.paymentIntent)
+    } catch (error) {
+        next(error)
+    }
+}
